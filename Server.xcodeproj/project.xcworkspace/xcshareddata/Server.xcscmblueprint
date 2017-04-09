@@ -1,4 +1,5 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
@@ -25,6 +26,7 @@
     "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : 9223372036854775807,
     "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : 9223372036854775807,
     "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : 9223372036854775807,
+    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : 9223372036854775807,
     "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : 9223372036854775807,
     "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++02A1464" : 9223372036854775807,
     "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++14E9AC1" : 9223372036854775807,
@@ -54,6 +56,7 @@
     "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : "Server\/.build\/checkouts\/socks.git--8001262774462276871\/",
     "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : "Server\/.build\/checkouts\/node.git-9175390252000121167\/",
     "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : "Server\/.build\/checkouts\/routing.git-5366657101075133678\/",
+    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : "sit-autolifestory-vapor-server\/",
     "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : "Server\/.build\/checkouts\/mongo-provider.git-3889432062388704695\/",
     "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++02A1464" : "Server\/.build\/checkouts\/crypto.git-7980259129511365902\/",
     "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++14E9AC1" : "Server\/.build\/checkouts\/fluent.git-6251908308727715749\/",
@@ -167,6 +170,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/socks.git--8001262774462276871",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/EugeneVegner\/sit-autolifestory-vapor-server.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/mongo-driver.git-8048380255664029588",

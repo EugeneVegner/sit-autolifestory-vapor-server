@@ -11,8 +11,8 @@ drop.get { req in
 
 drop.resource("posts", PostController())
 
-let mongo = try VaporMongo.Provider(database: "alsmongo", user: "admin", password: "admin")
-drop.addProvider(mongo)
+//let mongo = try VaporMongo.Provider(database: "alsmongo", user: "admin", password: "admin")
+//drop.addProvider(mongo)
 
 
 drop.run()
