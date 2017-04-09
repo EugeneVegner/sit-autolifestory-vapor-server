@@ -4,68 +4,117 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++3A0A33A" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++1244A8D" : 9223372036854775807,
-    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++91D72AB" : 9223372036854775807,
-    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++85B3C5E" : 9223372036854775807,
-    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++FC275E3" : 9223372036854775807,
-    "9948E95A70F754B78E92114BF205DC946294AF5D+++6121AA8" : 9223372036854775807,
-    "6400345F86F53D4096DD633F09AAE772FA6A202B+++C328D52" : 9223372036854775807,
-    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++5F73DDD" : 9223372036854775807,
-    "7E7C1062562B886ABFA1C65C1E929E1339657116+++48989C2" : 9223372036854775807,
-    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++E7C8795" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++ECDA5C6" : 9223372036854775807,
-    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++3E5BF54" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++D18B4D5" : 9223372036854775807,
-    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++386B1B0" : 9223372036854775807,
-    "BB6059597ED233770EB070B23F7A260DF184AEBC+++F02DDE1" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++72E88EA" : 9223372036854775807,
-    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++7D49788" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++2A23E0C" : 9223372036854775807,
     "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++716D339" : 9223372036854775807,
-    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : 9223372036854775807,
-    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : 9223372036854775807,
-    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : 9223372036854775807,
-    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : 9223372036854775807,
+    "9948E95A70F754B78E92114BF205DC946294AF5D+++102788E" : 9223372036854775807,
+    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++FC275E3" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++2A23E0C" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++ECDA5C6" : 9223372036854775807,
+    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++91D72AB" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++A85E5D6" : 9223372036854775807,
     "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++02A1464" : 9223372036854775807,
+    "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++5C3102E" : 9223372036854775807,
+    "BB6059597ED233770EB070B23F7A260DF184AEBC+++B6BE2D1" : 9223372036854775807,
+    "9948E95A70F754B78E92114BF205DC946294AF5D+++6121AA8" : 9223372036854775807,
+    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++A6C5573" : 9223372036854775807,
+    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : 9223372036854775807,
+    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : 9223372036854775807,
+    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : 9223372036854775807,
+    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++3E5BF54" : 9223372036854775807,
+    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++5F73DDD" : 9223372036854775807,
+    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++DBBC53D" : 9223372036854775807,
+    "7E7C1062562B886ABFA1C65C1E929E1339657116+++48989C2" : 9223372036854775807,
+    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++7D04FBC" : 9223372036854775807,
+    "BB6059597ED233770EB070B23F7A260DF184AEBC+++F02DDE1" : 9223372036854775807,
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++E92D907" : 9223372036854775807,
+    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++E7C8795" : 9223372036854775807,
+    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++FE3D896" : 9223372036854775807,
+    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++85B3C5E" : 9223372036854775807,
+    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++7D49788" : 9223372036854775807,
+    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++974B9B2" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++DA978C1" : 9223372036854775807,
+    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++CC295BA" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++1244A8D" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++72E88EA" : 9223372036854775807,
+    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++B3C8335" : 9223372036854775807,
+    "6400345F86F53D4096DD633F09AAE772FA6A202B+++B7E2BDF" : 9223372036854775807,
+    "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++F0AD0F2" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++D18B4D5" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : 9223372036854775807,
+    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++6444E0A" : 9223372036854775807,
+    "7E7C1062562B886ABFA1C65C1E929E1339657116+++3D0364E" : 9223372036854775807,
     "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++14E9AC1" : 9223372036854775807,
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++F5BD609" : 9223372036854775807
+    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++3CE02F7" : 9223372036854775807,
+    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++386B1B0" : 9223372036854775807,
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++3A0A33A" : 9223372036854775807,
+    "6400345F86F53D4096DD633F09AAE772FA6A202B+++C328D52" : 9223372036854775807,
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++B54A171" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++06A62C1" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++8169E7A" : 9223372036854775807,
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++F5BD609" : 9223372036854775807,
+    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++973C851" : 9223372036854775807,
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2A3D8916-87B8-447B-B4C7-BF1815A591D5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++3A0A33A" : "Server\/.build\/checkouts\/path-indexable.git-6101080875983074629\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++1244A8D" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
-    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++91D72AB" : "Server\/.build\/checkouts\/clibressl.git-4924093653370840509\/",
-    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++85B3C5E" : "Server\/.build\/checkouts\/console.git--2431895819212044213\/",
-    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++FC275E3" : "Server\/.build\/checkouts\/BSON.git--1864673809949788219\/",
-    "9948E95A70F754B78E92114BF205DC946294AF5D+++6121AA8" : "Server\/.build\/checkouts\/json.git-9153249592855998091\/",
-    "6400345F86F53D4096DD633F09AAE772FA6A202B+++C328D52" : "Server\/.build\/checkouts\/leaf.git-9164445114487378533\/",
-    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++5F73DDD" : "Server\/.build\/checkouts\/multipart.git-4210556629793786970\/",
-    "7E7C1062562B886ABFA1C65C1E929E1339657116+++48989C2" : "Server\/.build\/checkouts\/Turnstile.git-2443676010155639616\/",
-    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++E7C8795" : "Server\/.build\/checkouts\/tls.git-2678149690400510061\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++ECDA5C6" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
-    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++3E5BF54" : "Server\/.build\/checkouts\/MongoKitten.git--6244548337864045047\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++D18B4D5" : "Server\/.build\/checkouts\/engine.git-3311994267206676365\/",
-    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++386B1B0" : "Server\/.build\/checkouts\/Jay.git--595626396716718175\/",
-    "BB6059597ED233770EB070B23F7A260DF184AEBC+++F02DDE1" : "Server\/.build\/checkouts\/mongo-driver.git-8048380255664029588\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++72E88EA" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
-    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++7D49788" : "Server\/.build\/checkouts\/polymorphic.git--4354167031091999056\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++2A23E0C" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
     "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++716D339" : "Server\/.build\/checkouts\/path-indexable.git-6101080875983074629\/",
-    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : "Server\/.build\/checkouts\/socks.git--8001262774462276871\/",
-    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : "Server\/.build\/checkouts\/node.git-9175390252000121167\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : "Server\/.build\/checkouts\/routing.git-5366657101075133678\/",
-    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : "sit-autolifestory-vapor-server\/",
-    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : "Server\/.build\/checkouts\/mongo-provider.git-3889432062388704695\/",
+    "9948E95A70F754B78E92114BF205DC946294AF5D+++102788E" : "sit-autolifestory-vapor-server\/.build\/checkouts\/json.git-9153249592855998091\/",
+    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++FC275E3" : "Server\/.build\/checkouts\/BSON.git--1864673809949788219\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++2A23E0C" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++ECDA5C6" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
+    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++91D72AB" : "Server\/.build\/checkouts\/clibressl.git-4924093653370840509\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++A85E5D6" : "sit-autolifestory-vapor-server\/.build\/checkouts\/routing.git-5366657101075133678\/",
     "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++02A1464" : "Server\/.build\/checkouts\/crypto.git-7980259129511365902\/",
+    "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++5C3102E" : "sit-autolifestory-vapor-server\/.build\/checkouts\/crypto.git-7980259129511365902\/",
+    "BB6059597ED233770EB070B23F7A260DF184AEBC+++B6BE2D1" : "sit-autolifestory-vapor-server\/.build\/checkouts\/mongo-driver.git-8048380255664029588\/",
+    "9948E95A70F754B78E92114BF205DC946294AF5D+++6121AA8" : "Server\/.build\/checkouts\/json.git-9153249592855998091\/",
+    "789252EF81C502A43EF1153AAFB885D64C59FEBD+++A6C5573" : "sit-autolifestory-vapor-server\/.build\/checkouts\/clibressl.git-4924093653370840509\/",
+    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A" : "Server\/.build\/checkouts\/mongo-provider.git-3889432062388704695\/",
+    "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA" : "sit-autolifestory-vapor-server\/",
+    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++FA70629" : "Server\/.build\/checkouts\/socks.git--8001262774462276871\/",
+    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++3E5BF54" : "Server\/.build\/checkouts\/MongoKitten.git--6244548337864045047\/",
+    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++5F73DDD" : "Server\/.build\/checkouts\/multipart.git-4210556629793786970\/",
+    "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++DBBC53D" : "sit-autolifestory-vapor-server\/.build\/checkouts\/multipart.git-4210556629793786970\/",
+    "7E7C1062562B886ABFA1C65C1E929E1339657116+++48989C2" : "Server\/.build\/checkouts\/Turnstile.git-2443676010155639616\/",
+    "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++7D04FBC" : "sit-autolifestory-vapor-server\/.build\/checkouts\/mongo-provider.git-3889432062388704695\/",
+    "BB6059597ED233770EB070B23F7A260DF184AEBC+++F02DDE1" : "Server\/.build\/checkouts\/mongo-driver.git-8048380255664029588\/",
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++E92D907" : "sit-autolifestory-vapor-server\/.build\/checkouts\/path-indexable.git-6101080875983074629\/",
+    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++E7C8795" : "Server\/.build\/checkouts\/tls.git-2678149690400510061\/",
+    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++FE3D896" : "sit-autolifestory-vapor-server\/.build\/checkouts\/Jay.git--595626396716718175\/",
+    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++85B3C5E" : "Server\/.build\/checkouts\/console.git--2431895819212044213\/",
+    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++7D49788" : "Server\/.build\/checkouts\/polymorphic.git--4354167031091999056\/",
+    "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++974B9B2" : "sit-autolifestory-vapor-server\/.build\/checkouts\/socks.git--8001262774462276871\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++DA978C1" : "sit-autolifestory-vapor-server\/.build\/checkouts\/engine.git-3311994267206676365\/",
+    "013355313FF9FF2B55EA1241A5D12353638D9AC3+++CC295BA" : "sit-autolifestory-vapor-server\/.build\/checkouts\/tls.git-2678149690400510061\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++1244A8D" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++72E88EA" : "Server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
+    "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++B3C8335" : "sit-autolifestory-vapor-server\/.build\/checkouts\/BSON.git--1864673809949788219\/",
+    "6400345F86F53D4096DD633F09AAE772FA6A202B+++B7E2BDF" : "sit-autolifestory-vapor-server\/.build\/checkouts\/leaf.git-9164445114487378533\/",
+    "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++F0AD0F2" : "sit-autolifestory-vapor-server\/.build\/checkouts\/fluent.git-6251908308727715749\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++D18B4D5" : "Server\/.build\/checkouts\/engine.git-3311994267206676365\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++50F6D76" : "Server\/.build\/checkouts\/routing.git-5366657101075133678\/",
+    "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++6444E0A" : "sit-autolifestory-vapor-server\/.build\/checkouts\/MongoKitten.git--6244548337864045047\/",
+    "7E7C1062562B886ABFA1C65C1E929E1339657116+++3D0364E" : "sit-autolifestory-vapor-server\/.build\/checkouts\/Turnstile.git-2443676010155639616\/",
     "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++14E9AC1" : "Server\/.build\/checkouts\/fluent.git-6251908308727715749\/",
-    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++F5BD609" : "Server\/.build\/checkouts\/core.git-9210800844849382486\/"
+    "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++3CE02F7" : "sit-autolifestory-vapor-server\/.build\/checkouts\/console.git--2431895819212044213\/",
+    "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++386B1B0" : "Server\/.build\/checkouts\/Jay.git--595626396716718175\/",
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++3A0A33A" : "Server\/.build\/checkouts\/path-indexable.git-6101080875983074629\/",
+    "6400345F86F53D4096DD633F09AAE772FA6A202B+++C328D52" : "Server\/.build\/checkouts\/leaf.git-9164445114487378533\/",
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++B54A171" : "sit-autolifestory-vapor-server\/.build\/checkouts\/node.git-9175390252000121167\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++06A62C1" : "sit-autolifestory-vapor-server\/.build\/checkouts\/vapor.git-5492988889259800272\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++8169E7A" : "sit-autolifestory-vapor-server\/.build\/checkouts\/core.git-9210800844849382486\/",
+    "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++F5BD609" : "Server\/.build\/checkouts\/core.git-9210800844849382486\/",
+    "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++973C851" : "sit-autolifestory-vapor-server\/.build\/checkouts\/polymorphic.git--4354167031091999056\/",
+    "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++F5AE105" : "Server\/.build\/checkouts\/node.git-9175390252000121167\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Server",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Server.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/tls.git-2678149690400510061",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "013355313FF9FF2B55EA1241A5D12353638D9AC3+++CC295BA"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/tls.git-2678149690400510061",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
@@ -77,9 +126,24 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++02A1464"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/crypto.git-7980259129511365902",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "07D38DC615E8ADA07E68B7DA8DD8A2654638A334+++5C3102E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/mongo-provider.git-3889432062388704695",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++7D04FBC"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/mongo-provider.git-3889432062388704695",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "19278C05F991845F9DC0A319D6F77B1D93D9A83E+++F95C71A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/vapor.git-5492988889259800272",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++06A62C1"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/vapor.git-5492988889259800272",
@@ -102,9 +166,24 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++72E88EA"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/core.git-9210800844849382486",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++8169E7A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/routing.git-5366657101075133678",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++A85E5D6"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/engine.git-3311994267206676365",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++D18B4D5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/engine.git-3311994267206676365",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++DA978C1"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/core.git-9210800844849382486",
@@ -117,6 +196,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "52AFDBC9624F22D94526E36BBEE271C6D7FC65D3+++F5BD609"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/leaf.git-9164445114487378533",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6400345F86F53D4096DD633F09AAE772FA6A202B+++B7E2BDF"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/leaf.git-9164445114487378533",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6400345F86F53D4096DD633F09AAE772FA6A202B+++C328D52"
@@ -125,6 +209,16 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/fluent.git-6251908308727715749",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++14E9AC1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/fluent.git-6251908308727715749",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "65880DAFEE5F57D1D1C181560E763EECFD96B06D+++F0AD0F2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/BSON.git--1864673809949788219",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "686ABC7D4D16AC8C2BF9FA66CA941F6EB6F984F7+++B3C8335"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/BSON.git--1864673809949788219",
@@ -137,9 +231,24 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++7D49788"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/polymorphic.git--4354167031091999056",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6D09577DC770D433CEBE622BD4B45C8CF6CB8CCC+++973C851"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/MongoKitten.git--6244548337864045047",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++3E5BF54"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/MongoKitten.git--6244548337864045047",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6F592973CDAFC6396CA0DD0B7DAC14E5B55161D2+++6444E0A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/console.git--2431895819212044213",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "748C9296F4CFA6FB6918A0C73ECFD0DCCA1E2109+++3CE02F7"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/console.git--2431895819212044213",
@@ -152,6 +261,16 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "789252EF81C502A43EF1153AAFB885D64C59FEBD+++91D72AB"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/clibressl.git-4924093653370840509",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "789252EF81C502A43EF1153AAFB885D64C59FEBD+++A6C5573"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/Turnstile.git-2443676010155639616",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E7C1062562B886ABFA1C65C1E929E1339657116+++3D0364E"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/Turnstile.git-2443676010155639616",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E7C1062562B886ABFA1C65C1E929E1339657116+++48989C2"
@@ -162,9 +281,24 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++386B1B0"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/Jay.git--595626396716718175",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8FE2B4BB55A3C9D7B3B78FD1E2302636E924BDDC+++FE3D896"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/json.git-9153249592855998091",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9948E95A70F754B78E92114BF205DC946294AF5D+++102788E"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/json.git-9153249592855998091",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9948E95A70F754B78E92114BF205DC946294AF5D+++6121AA8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/socks.git--8001262774462276871",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C479842BAB37E5A02B52F0D8BB690041F1A927F+++974B9B2"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/socks.git--8001262774462276871",
@@ -177,6 +311,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9F1394C22FB167ACF207DF02C2A78FEB58C51E48+++7D5E9DA"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/mongo-driver.git-8048380255664029588",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BB6059597ED233770EB070B23F7A260DF184AEBC+++B6BE2D1"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/mongo-driver.git-8048380255664029588",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BB6059597ED233770EB070B23F7A260DF184AEBC+++F02DDE1"
@@ -187,6 +326,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++5F73DDD"
     },
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/multipart.git-4210556629793786970",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CADB2473D823C4B67E031AA19BD5C58C5C0C5C2C+++DBBC53D"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/node.git-9175390252000121167",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++3A0A33A"
@@ -195,6 +339,16 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/path-indexable.git-6101080875983074629",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++716D339"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/node.git-9175390252000121167",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++B54A171"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/sit-autolifestory-vapor-server\/.build\/repositories\/path-indexable.git-6101080875983074629",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EE0211841CDBC942EFB5905580DF4AA57B5992F6+++E92D907"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/eugenevegner\/Projects\/ALS\/Server\/.build\/repositories\/node.git-9175390252000121167",
