@@ -1,0 +1,7 @@
+{
+    "user": "username",
+    "password": "badpassword",
+    "database": "databasename",
+    "port": "27017",
+    "host": "z99a0.asdf8c8cx.us-east-1.rds.amazonaws.com"
+}
