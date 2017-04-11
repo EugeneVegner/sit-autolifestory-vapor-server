@@ -26,11 +26,66 @@ catch {
     print(error)
 }
 
+//drop.middleware.append(ClientMiddleware())
+
+drop.grouped(ClientMiddleware()).group("api") { api in
+    
+    api.group("v1", closure: { v1 in
+
+        v1.group("auth", closure: { (authV1) in
+            let auth = AuthController()
+            authV1.get("signIn", handler: auth.signIn)
+            authV1.get("signUp", handler: auth.signIn)
+            authV1.get("fb", handler: auth.signIn)
+            
+        })
+        
+    })
+    
+    api.grouped(SessionMiddleware()).group("v1", closure: { v1 in
+        
+    })
+    
+}
+
+//drop.grouped([ClientMiddleware(),ClientMiddleware()]).group("api/v1") { v1 in
+//    
+//    v1.group("auth", closure: { (authV1) in
+//        
+//        let auth = AuthController()
+//        authV1.get("signIn", handler: auth.signIn)
+//        authV1.get("signUp", handler: auth.signIn)
+//        authV1.get("fb", handler: auth.signIn)
+//        
+//    })
+//    
+//    
+//}
+
+
+
 
 drop.group("api/v1") { v1 in
+    
+    
+    
     v1.get("users") { request in
         throw Abort.custom(status: .badRequest, message: "Please POST the name firsteeee.")
     }
+    
+//    v1.group("auth", closure: { (authV1) in
+//       
+//        let auth = AuthController()
+//        authV1.get("signIn", handler: auth.signIn)
+//        authV1.get("signUp", handler: auth.signIn)
+//        authV1.get("fb", handler: auth.signIn)
+//        
+//        
+//        
+//        
+//        
+//    })
+    
     
     let ping = PingController()
     v1.get(handler: ping.test)
