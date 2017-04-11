@@ -31,6 +31,10 @@ drop.group("api/v1") { v1 in
     v1.get("users") { request in
         throw Abort.custom(status: .badRequest, message: "Please POST the name firsteeee.")
     }
+    
+    let ping = PingController()
+    v1.get(handler: ping.test)
+
 }
 
 
