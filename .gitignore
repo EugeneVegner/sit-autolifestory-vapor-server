@@ -65,3 +65,5 @@ fastlane/screenshots
 fastlane/test_output
 
 Server.xcodeproj/xcshareddata/xcschemes/Server.xcscheme
+
+.idea
