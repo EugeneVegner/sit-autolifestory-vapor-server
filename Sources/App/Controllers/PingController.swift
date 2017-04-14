@@ -11,8 +11,10 @@ final class PingController: ResourceRepresentable {
 //        var post = try request.post()
 //        try post.save()
 //        return post
+        //throw Callback.unknowError
         
-        return Server.successCallback(data: Node(["test":"sd"]))
+        throw Callback.notFound
+        //return Server.successCallback(data: Node(["test":"sd"]))
         //return SuccessJSON(JSON([:])).send()// try send()
     }
     

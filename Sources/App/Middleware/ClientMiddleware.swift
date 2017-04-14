@@ -27,7 +27,7 @@ public struct Client {
     }
     
     func isValid() -> Bool {
-        return false
+        return true
     }
     
 }
@@ -59,14 +59,24 @@ final class ClientMiddleware: Middleware {
                 .map { $0 as Polymorphic }
             
             if values.count != 3 {
-                throw Abort.custom(status: .ok, message: "Incorrect clent's param")
+                
+                throw Callback.unknowError
+                
             }
                         
             let cl = Client(values: values)
             if cl.isValid() == false {
+                
+                //throw Server.successCallback(data: Node(["test":"sd"]))
+                
                 throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
             }
-            throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
+            
+            throw Callback.seccess(data: Node(["test":"sd"]))
+            //throw Server.successCallback(data: Node(["test":"sd"]))
+            
+            
+            //throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
             
             let response = try next.respond(to: request)
             response.client = cl
@@ -81,8 +91,8 @@ final class ClientMiddleware: Middleware {
             
         }
         else {
-            
-            throw Abort.custom(status: .ok, message: "No client")
+            throw Callback.unknowError
+            //throw Abort.custom(status: .unauthorized, message: "No client")
             
         }
     }

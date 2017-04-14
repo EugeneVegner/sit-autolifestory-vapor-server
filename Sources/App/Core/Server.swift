@@ -9,7 +9,7 @@ enum CallbackType {
 
 class Server {
     
-    static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> ResponseRepresentable {
+    static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> JSON {
         
         var success: Bool = true
         var nodeErr: [Node]? = nil
@@ -18,7 +18,7 @@ class Server {
             success = false
             
             for err in errs {
-                nodeErr?.append(err.makeNode())
+                //nodeErr?.append(err.makeNode())
             }
         }
         var resp: [String: Node] = [:]
@@ -31,7 +31,7 @@ class Server {
 
     }
     
-    static func successCallback(data: Node) -> ResponseRepresentable {
+    static func successCallback(data: Node) -> JSON {
         return callback(data: data, errors: nil, code: 0)
     }
 

@@ -44,6 +44,9 @@ drop.grouped(ClientMiddleware()).group("api") { api in
     
     api.grouped(SessionMiddleware()).group("v1", closure: { v1 in
         
+        let ping = PingController()
+        v1.get("ping", handler: ping.test)
+        
     })
     
 }
