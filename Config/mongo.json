@@ -1,5 +1,5 @@
 {
-    "user": "admin1",
+    "user": "admin",
     "password": "qwerty",
     "database": "local",
     "port": "27017",

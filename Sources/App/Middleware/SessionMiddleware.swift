@@ -18,9 +18,9 @@ class SessionMiddleware: Middleware {
         return response
 
         
-        throw Abort.custom(status: .ok, message: "test")
+        //throw Abort.custom(status: .ok, message: "test")
         //return Server.successCallback(data: Node(["test":"sd"]))
-        
+        //return try next.respond(to: request)
         
         
         

@@ -8,12 +8,13 @@ final class PingController: ResourceRepresentable {
     }
     
     func test(request: Request) throws -> ResponseRepresentable {
+        print(#function)
 //        var post = try request.post()
 //        try post.save()
 //        return post
         //throw Callback.unknowError
         
-        throw Callback.notFound
+        return JSON(["afdad":"ddddddd"])
         //return Server.successCallback(data: Node(["test":"sd"]))
         //return SuccessJSON(JSON([:])).send()// try send()
     }

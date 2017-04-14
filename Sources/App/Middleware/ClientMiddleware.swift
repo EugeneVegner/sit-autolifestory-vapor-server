@@ -72,7 +72,7 @@ final class ClientMiddleware: Middleware {
                 throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
             }
             
-            throw Callback.seccess(data: Node(["test":"sd"]))
+            //throw Callback.seccess(data: Node(["test":"sd"]))
             //throw Server.successCallback(data: Node(["test":"sd"]))
             
             
