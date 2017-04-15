@@ -10,6 +10,7 @@
 		1E8FFD2A1E9D3EE000E677D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD291E9D3EE000E677D0 /* AuthController.swift */; };
 		1E8FFD2D1E9D4D9900E677D0 /* ClientMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD2C1E9D4D9900E677D0 /* ClientMiddleware.swift */; };
 		1E8FFD2F1E9D83A800E677D0 /* SessionMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD2E1E9D83A800E677D0 /* SessionMiddleware.swift */; };
+		1E8FFD321EA2756D00E677D0 /* IdEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD301EA2756800E677D0 /* IdEntity.swift */; };
 		OBJ_1547 /* libc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1459 /* libc.swift */; };
 		OBJ_1554 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1461 /* Array.swift */; };
 		OBJ_1555 /* Bool+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1462 /* Bool+String.swift */; };
@@ -5909,6 +5910,7 @@
 		1E8FFD291E9D3EE000E677D0 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		1E8FFD2C1E9D4D9900E677D0 /* ClientMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientMiddleware.swift; sourceTree = "<group>"; };
 		1E8FFD2E1E9D83A800E677D0 /* SessionMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMiddleware.swift; sourceTree = "<group>"; };
+		1E8FFD301EA2756800E677D0 /* IdEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdEntity.swift; sourceTree = "<group>"; };
 		OBJ_100 /* ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO8601.swift; sourceTree = "<group>"; };
 		OBJ_1000 /* ecp_oct.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ecp_oct.c; sourceTree = "<group>"; };
 		OBJ_1001 /* ecp_smpl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ecp_smpl.c; sourceTree = "<group>"; };
@@ -8686,6 +8688,7 @@
 				OBJ_20 /* Car.swift */,
 				OBJ_21 /* Post.swift */,
 				OBJ_22 /* User.swift */,
+				1E8FFD301EA2756800E677D0 /* IdEntity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -9615,7 +9618,7 @@
 			path = Email;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -9628,7 +9631,6 @@
 				OBJ_28 /* Dependencies */,
 				OBJ_1490 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_501 /* Address */ = {
@@ -12550,7 +12552,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_1490 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -14197,6 +14199,7 @@
 				OBJ_4131 /* Car.swift in Sources */,
 				OBJ_4132 /* Post.swift in Sources */,
 				1E8FFD2D1E9D4D9900E677D0 /* ClientMiddleware.swift in Sources */,
+				1E8FFD321EA2756D00E677D0 /* IdEntity.swift in Sources */,
 				OBJ_4133 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

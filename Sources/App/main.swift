@@ -58,6 +58,16 @@ drop.grouped(ClientMiddleware()).group("api") { api in
         v1.get("ping", handler: ping.test)
 
         v1.grouped(SessionMiddleware()).group("users", closure: { (usersV1) in
+            
+            usersV1.post("test", handler: { request in
+                
+                let username: Valid<Username> = try request.data["username"]!.validated()
+                return "Validated: \(username)"
+                
+                
+            })
+            
+            
             let users = UsersController()
             usersV1.post(handler: users.create)
             usersV1.get(handler: ping.test)

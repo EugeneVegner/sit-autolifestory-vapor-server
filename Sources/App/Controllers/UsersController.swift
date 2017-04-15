@@ -76,6 +76,7 @@ extension Request {
             print("incorrect json: \(String(describing: self.json))")
             throw Abort.badRequest }
         print("request json: \(json)")
-        return try User(node: json)
+        return try User(request: self)
+        //return try User(node: json)
     }
 }
