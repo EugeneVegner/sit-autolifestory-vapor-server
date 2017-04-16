@@ -10,9 +10,23 @@ final class User: IdEntity {
     var password: Valid<Password>
     //let title = Valid(Count<String>.max(5))
     
-    public required init(from: String) {
-        fatalError("init(from:) has not been implemented")
-    }
+//    public required init(from: String) {
+//        self.id = nil
+//        fatalError("init(from:) has not been implemented")
+//    }
+    
+//    init?(email: String, username: String, password: String) {
+//        //super.init(email)
+//        self.id = nil
+//        do {
+//            self.username = try username.validated()
+//            self.email = try email.validated()
+//            self.password = try password.validated()
+//        } catch  {
+//            print(error)
+//            return nil
+//        }
+//    }
 
 //    init?(username: String, email: String, password: String) {
 //
@@ -28,11 +42,10 @@ final class User: IdEntity {
 //    }
     
     required init(node: Node, in context: Context) throws {
-        //super.init(node: node, in: context)
-        username = try node.extract("username").string.validated()
-        email = try node.extract("email").string.validated()
-        password = try node.extract("password").string.validated()
-
+        self.username = try node.extract("username").string.validated()
+        self.email = try node.extract("email").string.validated()
+        self.password = try node.extract("password").string.validated()
+        try super.init(node: node, in: context)
 //        do {
 //            print("Step 1: \(node)")
 //            id = try node.extract("_id")
@@ -47,9 +60,14 @@ final class User: IdEntity {
     }
     
     public required init(request: Request) throws {
-        username = try request.data["username"].validated()
-        email = try request.data["email"].validated()
-        password = try request.data["password"].validated()
+        self.username = try request.data["username"].validated()
+        self.email = try request.data["email"].validated()
+        self.password = try request.data["password"].validated()
+        try super.init(request: request)
+    }
+    
+    public required init(from: String) {
+        fatalError("init(from:) has not been implemented")
     }
 
 ////    init(request: Request) throws {
@@ -81,15 +99,16 @@ final class User: IdEntity {
     }
 }
 
-extension User {
-    /**
-     This will automatically fetch from database, using example here to load
-     automatically for example. Remove on real models.
-     */
-    convenience init(_ from: String) {
-        self.init(from)
-    }
-}
+//extension User {
+//    /**
+//     This will automatically fetch from database, using example here to load
+//     automatically for example. Remove on real models.
+//     */
+//    public convenience init?(email: String, username: String, password: String) {
+//        self.init(email)
+//    }
+//    
+//}
 
 //extension User: Preparation {
 //    static func prepare(_ database: Database) throws {
