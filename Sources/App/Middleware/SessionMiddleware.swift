@@ -13,26 +13,36 @@ class SessionMiddleware: Middleware {
 
     func respond(to request: Request, chainingTo next: Responder) throws -> Response {
         
-        let response = try next.respond(to: request)
-        //response.client = cl
-        return response
-
+        guard let sessionToken = request.headers[.authorization] else {
+            throw Abort.custom(status: .ok, message: "Incorrect token")
+        }
         
-        //throw Abort.custom(status: .ok, message: "test")
-        //return Server.successCallback(data: Node(["test":"sd"]))
-        //return try next.respond(to: request)
-        
-        
-        
-        
-        //        do {
-        //            return try next.respond(to: request)
-        //        } catch FooError.fooServiceUnavailable {
-        //            throw Abort.custom(
-        //                status: .badRequest,
-        //                message: "Sorry, we were unable to query the Foo service."
-        //            )
-        //        }
+        do {
+            let result = try Session.query().filter("token", sessionToken).limit(1).run()
+            guard let session = result.first else {
+                print("Token not found")
+                throw Abort.custom(status: .ok, message: "Token not found")
+            }
+            
+            guard let userId = session.userId else {
+                print("userId not found")
+                throw Abort.custom(status: .ok, message: "Invalid session")
+            }
+            
+            let users = try User.query().filter("_id", userId).limit(1).run()
+            guard let user = users.first else {
+                print("user not found")
+                throw Abort.custom(status: .ok, message: "User not found")
+            }
+            
+            request.currentUser = user
+            let response = try next.respond(to: request)
+            return response
+            
+        } catch {
+            print("Get session's user error: \(error)")
+            throw Abort.custom(status: .ok, message: "Token error")
+        }
 
     }
 }

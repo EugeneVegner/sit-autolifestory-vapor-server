@@ -14,6 +14,10 @@ final class PingController: ResourceRepresentable {
 //        return post
         //throw Callback.unknowError
         
+        print("Request client: \(request.client)")
+        print("Request session: \(try request.session().data)")
+        
+        
         return JSON(["afdad":"ddddddd"])
         //return Server.successCallback(data: Node(["test":"sd"]))
         //return SuccessJSON(JSON([:])).send()// try send()

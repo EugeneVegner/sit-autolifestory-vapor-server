@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E2C2ED71EA56FD7001626BD /* RequestExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED61EA56FD7001626BD /* RequestExt.swift */; };
+		1E2C2ED91EA570E6001626BD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED81EA570E6001626BD /* Session.swift */; };
+		1E2C2EDB1EA5810B001626BD /* CustomValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */; };
 		1E8FFD2A1E9D3EE000E677D0 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD291E9D3EE000E677D0 /* AuthController.swift */; };
 		1E8FFD2D1E9D4D9900E677D0 /* ClientMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD2C1E9D4D9900E677D0 /* ClientMiddleware.swift */; };
 		1E8FFD2F1E9D83A800E677D0 /* SessionMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FFD2E1E9D83A800E677D0 /* SessionMiddleware.swift */; };
@@ -5907,6 +5910,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E2C2ED61EA56FD7001626BD /* RequestExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExt.swift; sourceTree = "<group>"; };
+		1E2C2ED81EA570E6001626BD /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomValidators.swift; sourceTree = "<group>"; };
 		1E8FFD291E9D3EE000E677D0 /* AuthController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		1E8FFD2C1E9D4D9900E677D0 /* ClientMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientMiddleware.swift; sourceTree = "<group>"; };
 		1E8FFD2E1E9D83A800E677D0 /* SessionMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionMiddleware.swift; sourceTree = "<group>"; };
@@ -8205,6 +8211,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E2C2ED51EA56FA2001626BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E2C2ED61EA56FD7001626BD /* RequestExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1E8FFD2B1E9D483F00E677D0 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
@@ -8405,6 +8419,7 @@
 			children = (
 				OBJ_15 /* Errors.swift */,
 				OBJ_16 /* Server.swift */,
+				1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -8689,6 +8704,7 @@
 				OBJ_21 /* Post.swift */,
 				OBJ_22 /* User.swift */,
 				1E8FFD301EA2756800E677D0 /* IdEntity.swift */,
+				1E2C2ED81EA570E6001626BD /* Session.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -11086,6 +11102,7 @@
 		OBJ_8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1E2C2ED51EA56FA2001626BD /* Extensions */,
 				1E8FFD2B1E9D483F00E677D0 /* Middleware */,
 				OBJ_10 /* Controllers */,
 				OBJ_14 /* Core */,
@@ -14197,8 +14214,11 @@
 				OBJ_4129 /* Server.swift in Sources */,
 				OBJ_4130 /* Response.swift in Sources */,
 				OBJ_4131 /* Car.swift in Sources */,
+				1E2C2ED71EA56FD7001626BD /* RequestExt.swift in Sources */,
 				OBJ_4132 /* Post.swift in Sources */,
+				1E2C2ED91EA570E6001626BD /* Session.swift in Sources */,
 				1E8FFD2D1E9D4D9900E677D0 /* ClientMiddleware.swift in Sources */,
+				1E2C2EDB1EA5810B001626BD /* CustomValidators.swift in Sources */,
 				1E8FFD321EA2756D00E677D0 /* IdEntity.swift in Sources */,
 				OBJ_4133 /* User.swift in Sources */,
 			);

@@ -11,7 +11,6 @@ import Vapor
 import Polymorphic
 import Sessions
 
-
 public struct Client {
     var version: Double?
     var platform: String?
@@ -31,20 +30,6 @@ public struct Client {
     }
     
 }
-
-
-extension Response {
-    var client: Client? {
-        get { return storage["client"] as? Client }
-        set { storage["client"] = newValue }
-    }
-}
-
-//final class Client {
-//    var version: Double?
-//    var platform: String?
-//    var sys: String?
-//}
 
 final class ClientMiddleware: Middleware {
     
@@ -78,8 +63,8 @@ final class ClientMiddleware: Middleware {
             
             //throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
             
+            request.client = cl
             let response = try next.respond(to: request)
-            response.client = cl
             return response
 
             
