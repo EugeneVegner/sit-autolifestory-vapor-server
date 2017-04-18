@@ -1,56 +1,51 @@
 import Vapor
 import HTTP
 
-private struct Incoming {
-    var email: Valid<Email>
-    var password: Valid<Password>
-    var deviceToken: Valid<NotNull>
-    var deviceId: Valid<NotNull>
-    var provider: Valid<OnlyAlphanumeric>
-    var facebookToken: Valid<NotNull>
-
-    init(
-        email: String,
-        password: String,
-        deviceToken: String,
-        deviceId: String,
-        provider: String,
-        facebookToken: String) throws {
+final class AuthController {
+    
+    struct Incoming {
+        var email: Valid<Email>
+        var password: Valid<Password>
+        var deviceToken: Valid<Default>?
+        var deviceId: Valid<Default>
+        var provider: Valid<OnlyAlphanumeric>
+        var facebookToken: Valid<Default>?
         
-        try self.email = email.validated()
-        try self.password = password.validated()
-        try self.deviceToken = deviceToken.validated()
-        try self.deviceId = deviceId.validated()
-        try self.provider = provider.validated()
-        try self.facebookToken = facebookToken.validated()
+        init(request: Request, provider: ProviderType) throws {
+            
+            try self.provider = provider.rawValue.validated()
+            
+            self.email = try request.data["email"].validated()
+            self.password = try request.data["password"].validated()
+            self.deviceToken = try request.data["deviceToken"].validated()
+            self.deviceId = try request.data["deviceId"].validated()
+            self.facebookToken = try request.data["facebookToken"].validated()
+            
+        }
         
     }
-    
-}
 
-
-final class AuthController: ResourceRepresentable {
-    
-    func index(request: Request) throws -> ResponseRepresentable {
-        return try Post.all().makeNode().converted(to: JSON.self)
-    }
-    
-    
     func signIn(request: Request) throws -> ResponseRepresentable {
         print(#function)
         let client = request.client
-        let email = request.
-        
-        
         
         do {
-            let result = try User.query().filter("email", user.email.value).limit(1).run()
-            if let _ = result.first {
-                return JSON(["test":"exist"])
+            
+            let inc = try request.parseSignIn()
+            
+            let users = try User.query().filter("email", inc.email.value).limit(1).run().array
+            guard let user = users.first, let userId = user.id else {
+                return JSON(["errrrr":"usernot found"])
             }
             
+            request.currentUser = user
             
-            try user.save()
+            let sessions = try Session.query().filter("userId", userId).limit(1).run().array
+            guard let session = sessions.first else {
+                let session = try createNewSession(request: request)
+            }
+
+            //try user.save()
             //let node = try user.makeNode()
             print("User has been created")
             return user//JSON(["test":node])
@@ -86,62 +81,21 @@ final class AuthController: ResourceRepresentable {
         
     }
 
-    
-    
-    
-    
-    
-    
-    func create(request: Request) throws -> ResponseRepresentable {
-        var post = try request.post()
-        try post.save()
-        return post
+    private func createNewSession(request: Request) throws -> Session {
+        var session = try Session(request: request)
+        session.userId = request.currentUser?.id
+        session.token = "token"
+        try session.save()
+        return session
     }
     
-    func show(request: Request, post: Post) throws -> ResponseRepresentable {
-        return post
-    }
     
-    func delete(request: Request, post: Post) throws -> ResponseRepresentable {
-        try post.delete()
-        return JSON([:])
-    }
-    
-    func clear(request: Request) throws -> ResponseRepresentable {
-        try Post.query().delete()
-        return JSON([])
-    }
-    
-    func update(request: Request, post: Post) throws -> ResponseRepresentable {
-        let new = try request.post()
-        var post = post
-        post.content = new.content
-        try post.save()
-        return post
-    }
-    
-    func replace(request: Request, post: Post) throws -> ResponseRepresentable {
-        try post.delete()
-        return try create(request: request)
-    }
-    
-    func makeResource() -> Resource<Post> {
-        return Resource(
-            index: index,
-            store: create,
-            show: show,
-            replace: replace,
-            modify: update,
-            destroy: delete,
-            clear: clear
-        )
-    }
 }
 
-extension Request {
-    func post() throws -> Post {
-        guard let json = json else { throw Abort.badRequest }
-        return try Post(node: json)
+private extension Request {
+    func parseSignIn() throws -> AuthController.Incoming {
+        guard let _ = json else { throw Abort.badRequest }
+        return try AuthController.Incoming(request: self, provider: .email)
     }
 }
 

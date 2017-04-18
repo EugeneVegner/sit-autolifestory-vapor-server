@@ -7,6 +7,12 @@ enum CallbackType {
     case success, failure
 }
 
+enum ProviderType: String {
+    case email = "email"
+    case fb = "fb"
+}
+
+
 class Server {
     
     static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> JSON {
