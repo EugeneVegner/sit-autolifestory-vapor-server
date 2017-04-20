@@ -3,23 +3,44 @@ import HTTP
 
 final class AuthController {
     
+    enum AuthType {
+        case signIn, signUp, fb
+    }
+    
     struct Incoming {
-        var email: Valid<Email>
-        var password: Valid<Password>
-        var deviceToken: Valid<Default>?
         var deviceId: Valid<Default>
         var provider: Valid<OnlyAlphanumeric>
-        var facebookToken: Valid<Default>?
         
-        init(request: Request, provider: ProviderType) throws {
+        // Optional
+        var email: Valid<Email>?
+        var password: Valid<Password>?
+        var deviceToken: Valid<Default>?
+        var facebookToken: Valid<Default>?
+        var username: Valid<OnlyAlphanumeric>?
+        
+        init(request: Request, provider: ProviderType, authType: AuthType) throws {
             
-            try self.provider = provider.rawValue.validated()
-            
-            self.email = try request.data["email"].validated()
-            self.password = try request.data["password"].validated()
+            self.provider = try provider.rawValue.validated()
             self.deviceToken = try request.data["deviceToken"].validated()
             self.deviceId = try request.data["deviceId"].validated()
-            self.facebookToken = try request.data["facebookToken"].validated()
+
+            switch authType {
+            case .signIn:
+                self.email = try request.data["email"].validated()
+                self.password = try request.data["password"].validated()
+                break
+                
+            case .signUp:
+                self.email = try request.data["email"].validated()
+                self.password = try request.data["password"].validated()
+                self.username = try request.data["username"].validated()
+                break
+                
+            case .fb:
+                self.facebookToken = try request.data["facebookToken"].validated()
+                break
+            }
+            
             
         }
         
@@ -31,9 +52,9 @@ final class AuthController {
         
         do {
             
-            let inc = try request.parseSignIn()
+            let inc = try request.parseSignInObject()
             
-            let users = try User.query().filter("email", inc.email.value).limit(1).run().array
+            let users = try User.query().filter("email", inc.email!.value).limit(1).run().array
             guard let user = users.first, let userId = user.id else {
                 return JSON(["errrrr":"usernot found"])
             }
@@ -41,9 +62,9 @@ final class AuthController {
             request.currentUser = user
             
             let sessions = try Session.query().filter("userId", userId).limit(1).run().array
-            guard let session = sessions.first else {
-                let session = try createNewSession(request: request)
-            }
+//            guard let session = sessions.first else {
+//                let ses = try createNewSession(request: request)
+//            }
 
             //try user.save()
             //let node = try user.makeNode()
@@ -93,9 +114,19 @@ final class AuthController {
 }
 
 private extension Request {
-    func parseSignIn() throws -> AuthController.Incoming {
+    func parseSignInObject() throws -> AuthController.Incoming {
         guard let _ = json else { throw Abort.badRequest }
-        return try AuthController.Incoming(request: self, provider: .email)
+        return try AuthController.Incoming(request: self, provider: .email, authType: .signIn)
+    }
+    
+    func parseSignUpObject() throws -> AuthController.Incoming {
+        guard let _ = json else { throw Abort.badRequest }
+        return try AuthController.Incoming(request: self, provider: .email, authType: .signUp)
+    }
+    
+    func parseFbObject() throws -> AuthController.Incoming {
+        guard let _ = json else { throw Abort.badRequest }
+        return try AuthController.Incoming(request: self, provider: .email, authType: .fb)
     }
 }
 

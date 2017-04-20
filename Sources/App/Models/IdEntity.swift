@@ -14,14 +14,14 @@ import Foundation
 public class IdEntity: Model {
     
     public var id: Node?
-    public var created: Double
-    public var updated: Double?
+    public var created: Int32
+    public var updated: Int32?
     
     public var exists: Bool = false
     
     public required init(from: String) {
         self.id = UUID().uuidString.makeNode()
-        self.created = Date().timeIntervalSince1970.doubleValue
+        self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
     
@@ -42,7 +42,7 @@ public class IdEntity: Model {
     public required init(request: Request) throws {
         print(#function)
         //self.id = UUID().uuidString.makeNode()
-        self.created = Date().timeIntervalSince1970.doubleValue
+        self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
 

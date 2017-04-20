@@ -88,6 +88,12 @@ final class Session: IdEntity {
         fatalError("init(request:) has not been implemented")
     }
     
+    init() throws {
+        self.token = ""
+        self.expired = 0
+        super.init(from: "")
+    }
+    
     ////    init(request: Request) throws {
     ////        print(#function)
     ////        //id = try request["id"]
@@ -102,7 +108,9 @@ final class Session: IdEntity {
             "_id": id,
             "userId": userId,
             "token": token,
-            "expired": expired
+            "expired": expired,
+            "created": created,
+            "updated": updated ?? Node.null
             ])
     }
     
@@ -112,10 +120,44 @@ final class Session: IdEntity {
         r["id"] = id ?? Node.null
         r["userId"] = userId
         r["token"] = Node.string(token)
+        r["expired"] = Node.number(Node.Number(expired))
         
         return JSON(Node.object(r))
     }
+        
+    
+    func generateToken() throws {
+        let date = Date()
+        let dateHex = date.hashValue.hex
+        token = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
+        expired = date.addingTimeInterval(60*60*1).timeIntervalSince1970.doubleValue
+        updated = Int32(date.timeIntervalSince1970)
+    }
+    
 }
+
+struct SessionX {
+    let id: String
+    let content: String
+    let createdAt: NSDate
+}
+
+
+extension SessionX: ResponseRepresentable {
+    
+    func makeResponse() throws -> Response {
+        print(#function)
+       return try Response(headers: ["Content-Type": "text/plain; charset=utf-8"], body: JSON(node:
+            [
+                "id": Node.string(id),
+                "content": Node.string(content),
+                "created-at": Node.number(Node.Number(Int32(createdAt.timeIntervalSince1970)))
+            ]
+        ))
+    }
+}
+
+
 
 //extension User {
 //    /**

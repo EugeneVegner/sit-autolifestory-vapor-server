@@ -1,5 +1,6 @@
 import Vapor
 import HTTP
+import Foundation
 
 final class PingController: ResourceRepresentable {
     
@@ -13,14 +14,38 @@ final class PingController: ResourceRepresentable {
 //        try post.save()
 //        return post
         //throw Callback.unknowError
+        //Byte
         
+        let date = Date()
+        let dateHex = date.hashValue.hex
+        let hash: String = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
+        let expired: Int32 = Int32(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
+        let expiredD: Double = date.addingTimeInterval(60*60*1).timeIntervalSince1970.doubleValue
+        
+        print("IntMax: \(IntMax())")
+        print("Int8.max: \(Int8.max)")
+        print("Int16.max: \(Int16.max)")
+        print("Int32.max: \(Int32.max)") // year 2038 (2147483647)
+        print("Int64.max: \(Int64.max)") // year 2262 (9223372036854775807)
+
+        
+        
+        
+        print("dateHex: \(dateHex)")
+        print("token hash: \(hash)")
+        print("expired: \(expired)")
+        print("expiredD: \(Node.number(Node.Number(expiredD)).string)")
         print("Request client: \(request.client)")
         print("Request session: \(try request.session().data)")
         
+        let ses = try Session()
+        try ses.generateToken()
+        //let nd = try ses.makeNode()
         
-        return JSON(["afdad":"ddddddd"])
-        //return Server.successCallback(data: Node(["test":"sd"]))
-        //return SuccessJSON(JSON([:])).send()// try send()
+        let ss = SessionX(id: "23", content: "conten", createdAt: NSDate())
+        
+        
+        return ss//Server.successCallback(data: ["afdad":nd])
     }
     
     
