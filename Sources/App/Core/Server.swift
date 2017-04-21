@@ -15,6 +15,22 @@ enum ProviderType: String {
 
 class Server {
     
+    struct Failure {
+        var code: Int = 0
+        var errors: [Swift.Error]?
+    }
+    
+    struct Success {
+        var data: [IdEntity]
+    }
+    
+    var headers: [String: String] {
+        return [
+            "Content-Type": "application/json",
+            "SecureX": "D"
+        ]
+    }
+    
     static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> JSON {
         
         var success: Bool = true
@@ -53,3 +69,22 @@ class Server {
     */
 
 }
+
+
+extension Server.Success: ResponseRepresentable {
+    
+    func makeResponse() throws -> Response {
+        print(#function)
+        return try Response(headers: Server.headers, body: JSON(node:
+            [
+                "id": Node.string(id),
+                "content": Node.string(content),
+                "created-at": Node.number(Node.Number(Int32(createdAt.timeIntervalSince1970)))
+            ]
+        ))
+    }
+}
+
+
+
+

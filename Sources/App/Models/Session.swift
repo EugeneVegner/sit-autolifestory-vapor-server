@@ -136,29 +136,6 @@ final class Session: IdEntity {
     
 }
 
-struct SessionX {
-    let id: String
-    let content: String
-    let createdAt: NSDate
-}
-
-
-extension SessionX: ResponseRepresentable {
-    
-    func makeResponse() throws -> Response {
-        print(#function)
-       return try Response(headers: ["Content-Type": "text/plain; charset=utf-8"], body: JSON(node:
-            [
-                "id": Node.string(id),
-                "content": Node.string(content),
-                "created-at": Node.number(Node.Number(Int32(createdAt.timeIntervalSince1970)))
-            ]
-        ))
-    }
-}
-
-
-
 //extension User {
 //    /**
 //     This will automatically fetch from database, using example here to load
