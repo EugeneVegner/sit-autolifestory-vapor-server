@@ -79,11 +79,14 @@ public class IdEntity: BaseModel {
         self.updated = nil
     }
 
-    public func configureJSON(request: Request) throws {
+    public func json() throws -> Node {
         print(#function)
+        return [
+            "id": id ?? Node.null,
+        ]
         //self.id = UUID().uuidString.makeNode()
-        self.created = Int32(Date().timeIntervalSince1970)
-        self.updated = nil
+//        self.created = Int32(Date().timeIntervalSince1970)
+//        self.updated = nil
     }
 
 }

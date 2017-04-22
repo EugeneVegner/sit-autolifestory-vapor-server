@@ -44,41 +44,21 @@ final class ClientMiddleware: Middleware {
                 .map { $0 as Polymorphic }
             
             if values.count != 3 {
-                
-                throw Callback.unknowError
-                
+                return try Server.Failure(code: 11, errors: nil).makeResponse()
             }
                         
             let cl = Client(values: values)
             if cl.isValid() == false {
-                
-                //throw Server.successCallback(data: Node(["test":"sd"]))
-                
-                throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
+                return try Server.Failure(code: 11, errors: [ServerError.new(code: 11, info: "", message: nil, type: nil)]).makeResponse()
             }
-            
-            //throw Callback.seccess(data: Node(["test":"sd"]))
-            //throw Server.successCallback(data: Node(["test":"sd"]))
-            
-            
-            //throw Abort.custom(status: .ok, message: "Incorrect vesrsion")
             
             request.client = cl
             let response = try next.respond(to: request)
             return response
-
-            
-//            let response = try next.respond(to: request)
-//            response.headers["sadasdasd"] = "sad"
-            
-            
-            //throw Abort.custom(status: .ok, message: "Incorrect clent's param2")
             
         }
         else {
-            throw Callback.unknowError
-            //throw Abort.custom(status: .unauthorized, message: "No client")
-            
+            return try Server.Failure(code: 11, errors: [ServerError.unknown]).makeResponse()
         }
     }
 }

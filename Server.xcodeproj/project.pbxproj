@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E08C9711EABE6CD0054735A /* NodesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9701EABE6CD0054735A /* NodesExt.swift */; };
 		1E2C2ED71EA56FD7001626BD /* RequestExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED61EA56FD7001626BD /* RequestExt.swift */; };
 		1E2C2ED91EA570E6001626BD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED81EA570E6001626BD /* Session.swift */; };
 		1E2C2EDB1EA5810B001626BD /* CustomValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */; };
@@ -5910,6 +5911,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E08C9701EABE6CD0054735A /* NodesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesExt.swift; sourceTree = "<group>"; };
 		1E2C2ED61EA56FD7001626BD /* RequestExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExt.swift; sourceTree = "<group>"; };
 		1E2C2ED81EA570E6001626BD /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomValidators.swift; sourceTree = "<group>"; };
@@ -8215,6 +8217,7 @@
 			isa = PBXGroup;
 			children = (
 				1E2C2ED61EA56FD7001626BD /* RequestExt.swift */,
+				1E08C9701EABE6CD0054735A /* NodesExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -14209,6 +14212,7 @@
 				1E8FFD2F1E9D83A800E677D0 /* SessionMiddleware.swift in Sources */,
 				OBJ_4126 /* PostController.swift in Sources */,
 				OBJ_4127 /* UsersController.swift in Sources */,
+				1E08C9711EABE6CD0054735A /* NodesExt.swift in Sources */,
 				1E8FFD2A1E9D3EE000E677D0 /* AuthController.swift in Sources */,
 				OBJ_4128 /* Errors.swift in Sources */,
 				OBJ_4129 /* Server.swift in Sources */,

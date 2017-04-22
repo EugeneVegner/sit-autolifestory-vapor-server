@@ -41,11 +41,9 @@ final class PingController: ResourceRepresentable {
         let ses = try Session()
         try ses.generateToken()
         //let nd = try ses.makeNode()
+        let json = try ses.json()
         
-        let ss = SessionX(id: "23", content: "conten", createdAt: NSDate())
-        
-        
-        return ss//Server.successCallback(data: ["afdad":nd])
+        return Server.Success(data: nil)
     }
     
     

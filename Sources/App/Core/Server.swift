@@ -17,45 +17,45 @@ class Server {
     
     struct Failure {
         var code: Int = 0
-        var errors: [Swift.Error]?
+        var errors: [ServerError]?
     }
     
     struct Success {
-        var data: [IdEntity]
+        var data: Node?
     }
     
-    var headers: [String: String] {
+    static var headers: [HeaderKey: String] {
         return [
-            "Content-Type": "application/json",
+            .contentType: "application/json",
             "SecureX": "D"
         ]
     }
     
-    static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> JSON {
-        
-        var success: Bool = true
-        var nodeErr: [Node]? = nil
-        
-        if let errs = errors {
-            success = false
-            
-            for err in errs {
-                //nodeErr?.append(err.makeNode())
-            }
-        }
-        var resp: [String: Node] = [:]
-        resp["success"] = Node(success)
-        resp["code"] = Node(code)
-        resp["data"] = data == nil ? Node.null : data!
-        resp["errors"] = nodeErr == nil ? Node.null : Node(nodeErr!)
-        
-        return JSON(Node(resp))
-
-    }
-    
-    static func successCallback(data: Node) -> JSON {
-        return callback(data: data, errors: nil, code: 0)
-    }
+//    static func callback(data: Node? = nil, errors: [Error]? = nil, code: Int = 0) -> JSON {
+//        
+//        var success: Bool = true
+//        var nodeErr: [Node]? = nil
+//        
+//        if let errs = errors {
+//            success = false
+//            
+//            for err in errs {
+//                //nodeErr?.append(err.makeNode())
+//            }
+//        }
+//        var resp: [String: Node] = [:]
+//        resp["success"] = Node(success)
+//        resp["code"] = Node(code)
+//        resp["data"] = data == nil ? Node.null : data!
+//        resp["errors"] = nodeErr == nil ? Node.null : Node(nodeErr!)
+//        
+//        return JSON(Node(resp))
+//
+//    }
+//    
+//    static func successCallback(data: Node) -> JSON {
+//        return callback(data: data, errors: nil, code: 0)
+//    }
 
 
     
@@ -75,13 +75,54 @@ extension Server.Success: ResponseRepresentable {
     
     func makeResponse() throws -> Response {
         print(#function)
-        return try Response(headers: Server.headers, body: JSON(node:
-            [
-                "id": Node.string(id),
-                "content": Node.string(content),
-                "created-at": Node.number(Node.Number(Int32(createdAt.timeIntervalSince1970)))
-            ]
-        ))
+        let body = try JSON(node: [
+            "code": 0,
+            "success": true,
+            "errors": nil,
+            "data": data
+            ])
+        print("failure: \(body)")
+        return Response(headers: Server.headers, body: body)
+    }
+}
+
+extension Server.Failure: ResponseRepresentable {
+//    public func makeResponse() -> Response {
+//        do {
+//            try <#throwing expression#>
+//        } catch pattern {
+//            <#statements#>
+//        }
+//        
+//        
+//        let body =  JSON(node: [
+//            "code": 1,
+//            "success": false,
+//            "errors": "dsf",
+//            "data": nil
+//            ])
+//        print("failure: \(body)")
+//        return Response(headers: Server.headers, body: body)
+//
+//    
+//    }
+    func makeResponse() throws -> Response {
+        print(#function)
+        var array: [Node] = []
+        if let errors = errors {
+            for err in errors {
+                array.append(err.node)
+            }
+        }
+        
+        let body = try JSON(node: [
+            "code": code,
+            "success": false,
+            "errors": Node(array),
+            "data": nil
+            ])
+        print("failure: \(body)")
+        return Response(headers: Server.headers, body: body)
     }
 }
 

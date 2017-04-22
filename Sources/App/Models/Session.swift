@@ -15,7 +15,7 @@ final class Session: IdEntity {
     //var id: Node?
     var userId: Node?
     var token: String
-    var expired: Double
+    var expired: Int32
     
     //let title = Valid(Count<String>.max(5))
     
@@ -130,8 +130,19 @@ final class Session: IdEntity {
         let date = Date()
         let dateHex = date.hashValue.hex
         token = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
-        expired = date.addingTimeInterval(60*60*1).timeIntervalSince1970.doubleValue
+        expired = Int32(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
         updated = Int32(date.timeIntervalSince1970)
+    }
+    
+    override func json() throws -> Node {
+        return [
+            "id": id ?? Node.null,
+            "userId": userId ?? Node.null,
+            "token": Node.string(token),
+            "expired": Node.number(Node.Number(expired)),
+            "created": Node.number(Node.Number(created)),
+            //"updated": Node.number(Node.Number(updated))
+        ]
     }
     
 }

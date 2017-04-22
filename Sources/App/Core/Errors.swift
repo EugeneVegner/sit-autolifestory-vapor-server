@@ -14,153 +14,72 @@
 import HTTP
 import Node
 
-/**
- Represents errors that can be thrown in any Vapor closure.
- Then, these errors can be caught in `Middleware` to give a
- desired response.
- */
-
-public struct ServerError {
-    var code: Int = 0
-    var description: String?
-    var message: String?
-    var type: String?
-    
-    init(_ code: Int, type: String, message: String, description: String) {
-        self.code = code
-        self.type = type
-        self.description = description
-        self.message = message
-    }
-    
-    func makeNode() -> Node {
-        return Node([
-            "code": Node(code),
-            "type": Node(type ?? "unknown"),
-            "description": Node(description ?? "Unknown"),
-            "message": Node(message ?? "Sorry, something went wrong"),
-            ])
-    }
-    
+public enum ServerError: Swift.Error {
+    case unknown
+    case new(code: Int, info: String, message: String? , type: String?)
+    case error(error: Error)
 }
 
-
-public protocol CallbackError: Error {
-    var message: String { get }
-    var description: String { get }
-    var code: Int { get }
-    var status: Status { get }
-    var data: Node? { get }
-    var metadata: Node? { get }
-    var errors: [Error]? { get }
-}
-
-/**
- A handful of standard errors that can be thrown
- in any Vapor closure by calling `throw Abort.<case>`.
- These errors can be caught in Middleware to give
- a desired response.
- */
-public enum Callback: Swift.Error {
-    case badRequest
-    case notFound
-    case unknowError
-    case serverError
-    case seccess(data: Node)
-    case failure(code: Int, errors: [Error])
-}
-
-extension Callback: CallbackError {
-    public var data: Node? {
-     return nil
-    }
-
+extension ServerError {
     
-    public var message: String {
-        switch self {
-        case .badRequest: return "Invalid request"
-        case .notFound: return "Page not found"
-        case .unknowError, .serverError: return "Something went wrong"
-        case .seccess(data: _): return ""
-        case .failure(code: _, errors: let errors):
-            if let err = errors.first {
-                return err.localizedDescription
-            }
-            return ""
-        }
-    }
-
-    public var description: String {
-        switch self {
-        case .badRequest: return "Invalid request"
-        case .notFound: return "Page not found"
-        case .unknowError, .serverError: return "Something went wrong"
-        case .seccess(data: _): return ""
-        case .failure(code: _, errors: let errors):
-            if let err = errors.first {
-                return err.localizedDescription
-            }
-            return ""
+    var node: Node {
+        get {
+            return [
+                "code": code.node,
+                "message": message.node,
+                "info": info.node,
+                "type": type.node
+            ]
         }
     }
     
     public var code: Int {
         switch self {
-        case .badRequest:
-            return 400
-        case .notFound:
-            return 404
-        case .serverError:
-            return 500
-        case .unknowError:
-            return 500
-        case .seccess(data: _): return 200
-        case .failure(code: _, errors: let errors): return 400
+        case .unknown: return 500
+        case .new(code: let code, info: _, message: _, type: _):
+            return code
+        case .error(error: _):
+            return 1
         }
     }
-    
-    public var status: Status {
+
+    public var info: String {
         switch self {
-        case .badRequest:
-            return .badRequest
-        case .notFound:
-            return .notFound
-        case .serverError:
-            return .internalServerError
-        case .unknowError:
-            return .ok
-        case .seccess(data: _): return .ok
-        case .failure(code: _, errors: let errors): return .expectationFailed
+        case .unknown: return "Something went wrong"
+        case .new(code: _, info: let info, message: _, type: _):
+            return info
+        case .error(error: let err):
+            return err.localizedDescription
+
         }
     }
     
-//    public var data: Node? {
-//        return nil
-//    }
-
-    public var metadata: Node? {
+    public var message: String {
         switch self {
-        case .seccess(data: let dt): return dt
-        default: return nil
+        case .unknown: return "Something went wrong"
+        case .new(code: _, info: let info, message: let message, type: _):
+            guard let msg = message else {
+                return info
+            }
+            return msg
+        case .error(error: let err):
+            return err.localizedDescription
+
         }
     }
 
-    
-    public var errors: [Error]? {
+    public var type: String {
         switch self {
-        case .badRequest:
-            return nil
-        case .notFound:
-            return nil
-        case .serverError:
-            return nil
-        case .unknowError:
-            return nil
-        case .seccess(data: _): return nil
-        case .failure(code: _, errors: let errors): return errors
-        }
+        case .unknown: return "unknown"
+        case .new(code: _, info: _, message: _, type: let type):
+            guard let type = type else {
+                return "unknown"
+            }
+            return type
+        case .error(error: _):
+            return "error"
 
+        }
     }
 
-    
 }
