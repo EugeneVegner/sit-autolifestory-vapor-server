@@ -10,7 +10,7 @@ final class UsersController: ResourceRepresentable {
         print(#function)
         var user = try request.user()
         do {
-            let result = try User.query().filter("email", user.email.value).limit(1).run()
+            let result = try User.query().filter("email", user.email).limit(1).run()
             if let _ = result.first {
                 return JSON(["test":"exist"])
             }

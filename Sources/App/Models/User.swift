@@ -5,9 +5,12 @@ import Foundation
 
 final class User: IdEntity {
     //var id: Node?
-    var username: Valid<Username>
-    var email: Valid<Email>
-    var password: Valid<Password>
+    
+    
+    
+    var username: String
+    var email: String
+    var password: String
     //let title = Valid(Count<String>.max(5))
     
 //    public required init(from: String) {
@@ -40,33 +43,51 @@ final class User: IdEntity {
 //            return nil
 //        }
 //    }
+
     
     required init(node: Node, in context: Context) throws {
-        self.username = try node.extract("username").string.validated()
-        self.email = try node.extract("email").string.validated()
-        self.password = try node.extract("password").string.validated()
-        try super.init(node: node, in: context)
-//        do {
-//            print("Step 1: \(node)")
-//            id = try node.extract("_id")
-//            username = try node.extract("username").string.validated()//   extract("username").string.validated()
-//            email = try node.extract("email").string.validated()
-//            password = try node.extract("password").string.validated()
-//            print("Step 2")
-//        } catch  {
-//            print(error)
-//            throw Abort.badRequest
-//        }
+        print(#function)
+        print("context: \(context)")
+        print("node: \(node)")
+        
+//        self.username = node["username"]!.string!.validated()//.validated()
+//        self.email = try node.extract("email").string.validated()
+//        self.password = try node.extract("password").string.validated()
+//        try super.init(node: node, in: context)
+        do {
+            self.username = try node.extract("username")
+            self.email = try node.extract("email")
+            self.password = try node.extract("password")
+            
+            
+            try super.init(node: node, in: context)
+            self.id = try node.extract("_id")
+            
+            print("_id: \(self.id)")
+            
+            self.created = try node.extract("created")
+            self.updated = try node.extract("updated")
+
+        } catch  {
+            print(error)
+            throw Abort.badRequest
+        }
     }
     
     public required init(request: Request) throws {
-        self.username = try request.data["username"].validated()
-        self.email = try request.data["email"].validated()
-        self.password = try request.data["password"].validated()
+        print(#function)
+        let username: Valid<Username> = try request.data["username"].validated()
+        let email: Valid<Email> = try request.data["email"].validated()
+        let password: Valid<Password> = try request.data["password"].validated()
+        
+        self.username = username.value
+        self.email = email.value
+        self.password = password.value
         try super.init(request: request)
     }
     
     public required init(from: String) {
+        print(#function)
         fatalError("init(from:) has not been implemented")
     }
 
@@ -80,22 +101,31 @@ final class User: IdEntity {
     
     
     override func makeNode(context: Context) throws -> Node {
+        print(#function)
+        
         return try Node(node: [
             "_id": id,
-            "username": username.value,
-            "email": email.value,
-            "password": password.value
+            "username": username,
+            "email": email,
+            "password": password,
+            "created": created,
+            "updated": updated
             ])
     }
     
-    func makeJSON() throws -> JSON {
+    override func json() -> Node {
+        print(#function)
         
-        var r: [String: Node] = [:]
-        r["id"] = id ?? Node.null
-        r["username"] = Node.string(username.value)
+        let d = self.id?.string
+        print("ppppp: \(d)")
+
         
+        return [
+            "id": self.id ?? Node.null,
+            "email": email.node,
+            "created": created.node
         
-        return JSON(Node.object(r))
+        ]
     }
 }
 

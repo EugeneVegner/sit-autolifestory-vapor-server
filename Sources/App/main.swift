@@ -36,7 +36,7 @@ catch {
 
 drop.preparations.append(Post.self)
 drop.preparations.append(User.self)
-//drop.preparations.append(Site.self)
+drop.preparations.append(Session.self)
 
 //drop.middleware.append(ClientMiddleware())
 
@@ -56,6 +56,9 @@ drop.grouped(ClientMiddleware()).group("api") { api in
         
         let ping = PingController()
         v1.get("ping", handler: ping.test)
+        
+        let users = UsersController()
+        v1.post("users", handler: users.create)
 
         v1.grouped(SessionMiddleware()).group("users", closure: { (usersV1) in
             
@@ -68,8 +71,8 @@ drop.grouped(ClientMiddleware()).group("api") { api in
             })
             
             
-            let users = UsersController()
-            usersV1.post(handler: users.create)
+            //let users = UsersController()
+            //usersV1.post(handler: users.create)
             usersV1.get(handler: ping.test)
 
             

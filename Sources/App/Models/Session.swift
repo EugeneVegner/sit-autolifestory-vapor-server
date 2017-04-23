@@ -134,7 +134,7 @@ final class Session: IdEntity {
         updated = Int32(date.timeIntervalSince1970)
     }
     
-    override func json() throws -> Node {
+    override func json() -> Node {
         return [
             "id": id ?? Node.null,
             "userId": userId ?? Node.null,

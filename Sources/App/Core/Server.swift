@@ -12,15 +12,19 @@ enum ProviderType: String {
     case fb = "fb"
 }
 
+public func log(_ items: Any...) {
+    print(items)
+}
+
 
 class Server {
     
-    struct Failure {
-        var code: Int = 0
-        var errors: [ServerError]?
+    struct failure {
+        var status: Status = .badRequest
+        var errors: [Server.Error]?
     }
     
-    struct Success {
+    struct success {
         var data: Node?
     }
     
@@ -71,7 +75,7 @@ class Server {
 }
 
 
-extension Server.Success: ResponseRepresentable {
+extension Server.success: ResponseRepresentable {
     
     func makeResponse() throws -> Response {
         print(#function)
@@ -81,12 +85,12 @@ extension Server.Success: ResponseRepresentable {
             "errors": nil,
             "data": data
             ])
-        print("failure: \(body)")
+        print("success: \(body)")
         return Response(headers: Server.headers, body: body)
     }
 }
 
-extension Server.Failure: ResponseRepresentable {
+extension Server.failure: ResponseRepresentable {
 //    public func makeResponse() -> Response {
 //        do {
 //            try <#throwing expression#>
@@ -116,13 +120,20 @@ extension Server.Failure: ResponseRepresentable {
         }
         
         let body = try JSON(node: [
-            "code": code,
+            "code": status.statusCode,
             "success": false,
             "errors": Node(array),
             "data": nil
             ])
         print("failure: \(body)")
-        return Response(headers: Server.headers, body: body)
+        
+        return Response(version: Version(major: 1), status: status, headers: Server.headers, body: body)
+
+        
+        
+        
+        
+        //return Response(headers: Server.headers, body: body)
     }
 }
 

@@ -41,9 +41,25 @@ final class PingController: ResourceRepresentable {
         let ses = try Session()
         try ses.generateToken()
         //let nd = try ses.makeNode()
-        let json = try ses.json()
+        //let json = ses.json()
         
-        return Server.Success(data: nil)
+        var nodes: [Node] = []
+        do {
+            let users = try User.all()
+            for user in users {
+                nodes.append(user.json())
+            }
+            
+
+        } catch let error {
+            print(error)
+            let err = Server.Error.new(code: 15, info: error.localizedDescription, message: nil, type: nil)
+            return Server.failure(status: .badRequest, errors: [err])
+        }
+                
+        return Server.success(data: [
+                "users": Node.array(nodes)
+            ])
     }
     
     

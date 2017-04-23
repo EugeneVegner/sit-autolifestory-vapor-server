@@ -40,7 +40,7 @@ class SessionMiddleware: Middleware {
             return response
             
         } catch {
-            print("Get session's user error: \(error)")
+            log("ERROR: Get session's user error: \(error)")
             throw Abort.custom(status: .ok, message: "Token error")
         }
 

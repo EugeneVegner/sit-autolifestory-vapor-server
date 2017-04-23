@@ -14,13 +14,16 @@
 import HTTP
 import Node
 
-public enum ServerError: Swift.Error {
-    case unknown
-    case new(code: Int, info: String, message: String? , type: String?)
-    case error(error: Error)
+
+extension Server {
+    enum Error: Swift.Error {
+        case unknown
+        case new(code: Int, info: String, message: String? , type: String?)
+        case status(Status)
+    }
 }
 
-extension ServerError {
+extension Server.Error {
     
     var node: Node {
         get {
@@ -34,12 +37,13 @@ extension ServerError {
     }
     
     public var code: Int {
+        
         switch self {
         case .unknown: return 500
         case .new(code: let code, info: _, message: _, type: _):
             return code
-        case .error(error: _):
-            return 1
+        case .status(let status):
+            return status.statusCode
         }
     }
 
@@ -48,9 +52,8 @@ extension ServerError {
         case .unknown: return "Something went wrong"
         case .new(code: _, info: let info, message: _, type: _):
             return info
-        case .error(error: let err):
-            return err.localizedDescription
-
+        case .status(let status):
+            return status.reasonPhrase
         }
     }
     
@@ -62,9 +65,8 @@ extension ServerError {
                 return info
             }
             return msg
-        case .error(error: let err):
-            return err.localizedDescription
-
+        case .status(let status):
+            return status.reasonPhrase
         }
     }
 
@@ -76,8 +78,8 @@ extension ServerError {
                 return "unknown"
             }
             return type
-        case .error(error: _):
-            return "error"
+        case .status(let status):
+            return String(describing: status)
 
         }
     }

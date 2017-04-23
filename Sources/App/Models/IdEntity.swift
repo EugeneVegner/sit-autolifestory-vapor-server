@@ -59,9 +59,16 @@ public class IdEntity: BaseModel {
     }
     
     required public init(node: Node, in context: Context) throws {
-        id = try node.extract("_id")
-        created = try node.extract("created")
-        updated = try node.extract("updated")
+        let ids: Node = try node.extract("_id")
+        print("ids: \(ids.string ?? "")")
+        
+        self.id = Node(ids.string ?? "")
+        
+         print("id: \(id)")
+        
+        
+        self.created = try node.extract("created")
+        self.updated = try node.extract("updated")
     }
     
     public func makeNode(context: Context) throws -> Node {
@@ -74,12 +81,12 @@ public class IdEntity: BaseModel {
     
     public required init(request: Request) throws {
         print(#function)
-        //self.id = UUID().uuidString.makeNode()
+        self.id = UUID().uuidString.makeNode()
         self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
 
-    public func json() throws -> Node {
+    public func json() -> Node {
         print(#function)
         return [
             "id": id ?? Node.null,

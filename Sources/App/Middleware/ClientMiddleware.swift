@@ -44,12 +44,14 @@ final class ClientMiddleware: Middleware {
                 .map { $0 as Polymorphic }
             
             if values.count != 3 {
-                return try Server.Failure(code: 11, errors: nil).makeResponse()
+                let error = Server.Error.new(code: 5, info: "Invalid \"Client\" header", message: nil, type: "client")
+                return try Server.failure(status: .badRequest, errors: [error]).makeResponse()
             }
                         
             let cl = Client(values: values)
             if cl.isValid() == false {
-                return try Server.Failure(code: 11, errors: [ServerError.new(code: 11, info: "", message: nil, type: nil)]).makeResponse()
+                let status: Status = .serviceUnavailable
+                return try Server.failure(status: status, errors: [Server.Error.new(code: 5, info: status.reasonPhrase, message: "Current clien not supported", type: "client")]).makeResponse()
             }
             
             request.client = cl
@@ -58,7 +60,7 @@ final class ClientMiddleware: Middleware {
             
         }
         else {
-            return try Server.Failure(code: 11, errors: [ServerError.unknown]).makeResponse()
+            return try Server.failure(status: .badRequest, errors: [Server.Error.unknown]).makeResponse()
         }
     }
 }
