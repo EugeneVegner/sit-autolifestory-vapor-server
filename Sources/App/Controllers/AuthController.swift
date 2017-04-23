@@ -9,7 +9,6 @@ final class AuthController {
     
     struct Incoming {
         var deviceId: Valid<Default>
-        var provider: Valid<OnlyAlphanumeric>
         
         // Optional
         var email: Valid<Email>?
@@ -20,8 +19,7 @@ final class AuthController {
         
         init(request: Request, provider: ProviderType, authType: AuthType) throws {
             
-            self.provider = try provider.rawValue.validated()
-            self.deviceToken = try request.data["deviceToken"].validated()
+            self.deviceToken = try request.data["deviceToken"]?.validated()
             self.deviceId = try request.data["deviceId"].validated()
 
             switch authType {
@@ -45,7 +43,7 @@ final class AuthController {
         }
         
     }
-
+    
     func signIn(request: Request) throws -> ResponseRepresentable {
         print(#function)
         let client = request.client
@@ -53,15 +51,31 @@ final class AuthController {
         do {
             
             let inc = try request.parseSignInObject()
+            print("inc: \(inc)")
             
             let users = try User.query().filter("email", inc.email!.value).limit(1).run().array
-            guard let user = users.first, let userId = user.id else {
+            print("users: \(users)")
+            for user in users {
+                print("user[\(user.id?.string)]: \(user.email)")
+            }
+            
+            guard let user = users.first else {
                 return JSON(["errrrr":"usernot found"])
             }
             
+            //user.email.isEmpty
+            
+            
+            guard let psw = inc.password?.value, psw == user.password else {
+                return JSON(["errrrr":"invalid passwor"])
+            }
+            
+            
+            
+            print("user: \(user)")
             request.currentUser = user
             
-            let sessions = try Session.query().filter("userId", userId).limit(1).run().array
+            //let sessions = try Session.query().filter("userId", user.keyId).limit(1).run().array
 //            guard let session = sessions.first else {
 //                let ses = try createNewSession(request: request)
 //            }
@@ -69,11 +83,11 @@ final class AuthController {
             //try user.save()
             //let node = try user.makeNode()
             print("User has been created")
-            return user//JSON(["test":node])
+            return user as! ResponseRepresentable//JSON(["test":node])
             
-        } catch {
+        } catch let error {
             print("Create user error: \(error)")
-            return JSON(["test":"error"])
+            return JSON(["test":error.localizedDescription.node])
         }
 
         
@@ -115,7 +129,7 @@ final class AuthController {
 
 private extension Request {
     func parseSignInObject() throws -> AuthController.Incoming {
-        guard let _ = json else { throw Abort.badRequest }
+        //guard let _ = json else { throw Abort.badRequest }
         return try AuthController.Incoming(request: self, provider: .email, authType: .signIn)
     }
     

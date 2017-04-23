@@ -33,6 +33,21 @@ extension String {
 //    let node: Node = { return Node.null }
 //}
 
+extension Node {
+    
+    mutating func append(node: Node?)  {
+        //var dictOfNodes: [String : Node] = [:]
+        guard let dic = node?.nodeObject else {
+            return
+        }
+        for (key, val) in dic {
+            self[key] = val
+        }
+    }
+    
+    
+}
+
 
 
 

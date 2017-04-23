@@ -26,3 +26,11 @@ class Default: ValidationSuite {
     }
 }
 
+class NulledString: ValidationSuite {
+    static func validate(input value: String) throws {
+        print("input: \(value)")
+        return
+    }
+}
+
+

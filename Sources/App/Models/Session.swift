@@ -16,115 +16,54 @@ final class Session: IdEntity {
     var userId: Node?
     var token: String
     var expired: Int32
-    
-    //let title = Valid(Count<String>.max(5))
-    
-    //    public required init(from: String) {
-    //        self.id = nil
-    //        fatalError("init(from:) has not been implemented")
-    //    }
-    
-    //    init?(email: String, username: String, password: String) {
-    //        //super.init(email)
-    //        self.id = nil
-    //        do {
-    //            self.username = try username.validated()
-    //            self.email = try email.validated()
-    //            self.password = try password.validated()
-    //        } catch  {
-    //            print(error)
-    //            return nil
-    //        }
-    //    }
-    
-    //    init?(username: String, email: String, password: String) {
-    //
-    //        self.id = UUID().uuidString.makeNode()
-    //        do {
-    //            self.username = try username.validated()
-    //            self.email = try email.validated()
-    //            self.password = try password.validated()
-    //        } catch  {
-    //            print(error)
-    //            return nil
-    //        }
-    //    }
+    var deviceId: String
+    var udid: String?
+    var platform: String
     
     required init(node: Node, in context: Context) throws {
         self.userId = try node.extract("userId")
         self.token = try node.extract("token")
         self.expired = try node.extract("expired")
+        self.deviceId = try node.extract("deviceId")
+        self.udid = try node.extract("udid")
+        self.platform = try node.extract("platform")
         try super.init(node: node, in: context)
-        //        do {
-        //            print("Step 1: \(node)")
-        //            id = try node.extract("_id")
-        //            username = try node.extract("username").string.validated()//   extract("username").string.validated()
-        //            email = try node.extract("email").string.validated()
-        //            password = try node.extract("password").string.validated()
-        //            print("Step 2")
-        //        } catch  {
-        //            print(error)
-        //            throw Abort.badRequest
-        //        }
     }
     
-//    public required init(request: Request) throws {
-//        
-//        
-//        
-//        
-//        
-//        self.userId = try request.data["userId"]?.string ?? Node.null
-//        //self.email = try request.data["email"].validated()
-//        //self.password = try request.data["password"].validated()
-//        //try super.init(request: request)
+    public init(userId: Node?, token: String, deviceId: String, udid: String?, platform: String) throws{
+        self.userId = userId
+        self.token = token
+        self.deviceId = deviceId
+        self.udid = udid
+        self.platform = platform
+        self.expired = 0
+        super.init(uuid: UUID().uuidString)
+    }
+    
+//    public required init(from: String) {
+//        fatalError("init(from:) has not been implemented")
 //    }
     
-    public required init(from: String) {
+    public required init(request: Request) throws {
         fatalError("init(from:) has not been implemented")
     }
-    
-    public required init(request: Request) throws {
-        fatalError("init(request:) has not been implemented")
-    }
-    
-    init() throws {
-        self.token = ""
-        self.expired = 0
-        super.init(from: "")
-    }
-    
-    ////    init(request: Request) throws {
-    ////        print(#function)
-    ////        //id = try request["id"]
-    //        username = try request.data["username"].validated()//   extract("username").string.validated()
-    //        email = try request.data["email"].validated()
-    //        password = try request.data["password"].validated()
-    ////    }
-    
-    
+        
     override func makeNode(context: Context) throws -> Node {
         return try Node(node: [
-            "_id": id,
             "userId": userId,
             "token": token,
             "expired": expired,
+            "deviceId": deviceId,
+            "udid": udid,
+            "platform": platform,
             "created": created,
             "updated": updated ?? Node.null
             ])
     }
     
     func makeJSON() throws -> JSON {
-        
-        var r: [String: Node] = [:]
-        r["id"] = id ?? Node.null
-        r["userId"] = userId
-        r["token"] = Node.string(token)
-        r["expired"] = Node.number(Node.Number(expired))
-        
-        return JSON(Node.object(r))
+        fatalError("init(request:) has not been implemented")
     }
-        
     
     func generateToken() throws {
         let date = Date()
@@ -134,17 +73,16 @@ final class Session: IdEntity {
         updated = Int32(date.timeIntervalSince1970)
     }
     
-    override func json() -> Node {
-        return [
-            "id": id ?? Node.null,
-            "userId": userId ?? Node.null,
-            "token": Node.string(token),
-            "expired": Node.number(Node.Number(expired)),
-            "created": Node.number(Node.Number(created)),
-            //"updated": Node.number(Node.Number(updated))
-        ]
+    override func json() throws -> Node {
+        var node = try super.json()
+        node.append(node: try Node(node: [
+            "userId": userId,
+            "token": token,
+            "expired": expired,
+            ]))
+        return node
     }
-    
+
 }
 
 //extension User {

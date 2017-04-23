@@ -20,6 +20,7 @@ extension Server {
         case unknown
         case new(code: Int, info: String, message: String? , type: String?)
         case status(Status)
+        case headers(HeaderKey)
     }
 }
 
@@ -39,21 +40,18 @@ extension Server.Error {
     public var code: Int {
         
         switch self {
-        case .unknown: return 500
-        case .new(code: let code, info: _, message: _, type: _):
-            return code
-        case .status(let status):
-            return status.statusCode
+        case .unknown, .headers: return 500
+        case .new(code: let code, info: _, message: _, type: _): return code
+        case .status(let status): return status.statusCode
         }
     }
 
     public var info: String {
         switch self {
         case .unknown: return "Something went wrong"
-        case .new(code: _, info: let info, message: _, type: _):
-            return info
-        case .status(let status):
-            return status.reasonPhrase
+        case .new(code: _, info: let info, message: _, type: _): return info
+        case .status(let status): return status.reasonPhrase
+        case .headers(let key): return "Invalid header: \(key.key)"
         }
     }
     
@@ -65,8 +63,8 @@ extension Server.Error {
                 return info
             }
             return msg
-        case .status(let status):
-            return status.reasonPhrase
+        case .status(let status): return status.reasonPhrase
+        case .headers(let key): return "Invalid header: \(key.key)"
         }
     }
 
@@ -78,10 +76,16 @@ extension Server.Error {
                 return "unknown"
             }
             return type
-        case .status(let status):
-            return String(describing: status)
-
+        case .status(let status): return String(describing: status)
+        case .headers: return "headers"
         }
     }
 
 }
+
+
+
+
+
+
+

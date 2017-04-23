@@ -15,9 +15,9 @@ import TypeSafeRouting
 
 @_exported import class Fluent.Database
 
-public protocol BaseModel: Entity, JSONRepresentable, StringInitializable, ResponseRepresentable { }
+public protocol EntityProtocol: Entity, JSONRepresentable, StringInitializable, ResponseRepresentable { }
 
-extension BaseModel {
+extension EntityProtocol {
     public func makeResponse() throws -> Response {
         return try makeJSON().makeResponse()
     }
@@ -25,7 +25,7 @@ extension BaseModel {
 
 // MARK: JSONRepresentable
 
-extension BaseModel {
+extension EntityProtocol {
     public func makeJSON() throws -> JSON {
         let node = try makeNode()
         return try JSON(node: node)
@@ -34,7 +34,7 @@ extension BaseModel {
 
 // MARK: StringInitializable
 
-extension BaseModel {
+extension EntityProtocol {
     public init?(from string: String) throws {
         if let model = try Self.find(string) {
             self = model
@@ -44,7 +44,7 @@ extension BaseModel {
     }
 }
 
-public class IdEntity: BaseModel {
+public class IdEntity: Entity {
     
     public var id: Node?
     public var created: Int32
@@ -52,48 +52,43 @@ public class IdEntity: BaseModel {
     
     public var exists: Bool = false
     
-    public required init(from: String) {
-        self.id = UUID().uuidString.makeNode()
+    public init(uuid: String) {
+        self.id = uuid.makeNode()
         self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
     
-    required public init(node: Node, in context: Context) throws {
-        let ids: Node = try node.extract("_id")
-        print("ids: \(ids.string ?? "")")
-        
-        self.id = Node(ids.string ?? "")
-        
-         print("id: \(id)")
-        
-        
-        self.created = try node.extract("created")
-        self.updated = try node.extract("updated")
-    }
     
     public func makeNode(context: Context) throws -> Node {
+        if id == nil { id = UUID().uuidString.makeNode() }
         return try Node(node: [
-            "_id": id,
+            //"id": id,
             "created": created,
             "updated": updated
             ])
     }
     
-    public required init(request: Request) throws {
+    public func json() throws -> Node {
         print(#function)
-        self.id = UUID().uuidString.makeNode()
+        return try Node(node: [
+            "id": id,
+            "created": created,
+            "updated": updated
+            ])
+    }
+    
+    // MARK: - Requared
+
+    required public init(request: Request) throws {
+        let uuid = UUID().uuidString
+        self.id = uuid.makeNode()
         self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
-
-    public func json() -> Node {
-        print(#function)
-        return [
-            "id": id ?? Node.null,
-        ]
-        //self.id = UUID().uuidString.makeNode()
-//        self.created = Int32(Date().timeIntervalSince1970)
-//        self.updated = nil
+    required public init(node: Node, in context: Context) throws {
+        self.id = try node.extract("_id")
+        self.created = try node.extract("created")
+        self.updated = try node.extract("updated")
     }
 
 }
@@ -123,11 +118,6 @@ public protocol Configure {
 //}
 
 extension IdEntity: Preparation {
-    public static func prepare(_ database: Database) throws {
-        //
-    }
-    
-    public static func revert(_ database: Database) throws {
-        //
-    }
+    public static func prepare(_ database: Database) throws {}
+    public static func revert(_ database: Database) throws {}
 }

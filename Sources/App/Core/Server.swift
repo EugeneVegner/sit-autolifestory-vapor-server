@@ -21,7 +21,12 @@ class Server {
     
     struct failure {
         var status: Status = .badRequest
-        var errors: [Server.Error]?
+        let errors: [Server.Error]
+
+        init(_ status: Status = .badRequest, errors: [Server.Error]) {
+            self.status = status
+            self.errors = errors
+        }
     }
     
     struct success {
@@ -113,10 +118,8 @@ extension Server.failure: ResponseRepresentable {
     func makeResponse() throws -> Response {
         print(#function)
         var array: [Node] = []
-        if let errors = errors {
-            for err in errors {
-                array.append(err.node)
-            }
+        for err in errors {
+            array.append(err.node)
         }
         
         let body = try JSON(node: [

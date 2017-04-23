@@ -2,15 +2,15 @@ import Vapor
 import HTTP
 import Fluent
 import Foundation
+import BSON
 
 final class User: IdEntity {
     //var id: Node?
-    
-    
-    
     var username: String
     var email: String
     var password: String
+    
+    
     //let title = Valid(Count<String>.max(5))
     
 //    public required init(from: String) {
@@ -46,9 +46,9 @@ final class User: IdEntity {
 
     
     required init(node: Node, in context: Context) throws {
-        print(#function)
-        print("context: \(context)")
-        print("node: \(node)")
+        //print(#function)
+        //print("context: \(context)")
+        //print("node: \(node)")
         
 //        self.username = node["username"]!.string!.validated()//.validated()
 //        self.email = try node.extract("email").string.validated()
@@ -59,11 +59,11 @@ final class User: IdEntity {
             self.email = try node.extract("email")
             self.password = try node.extract("password")
             
-            
             try super.init(node: node, in: context)
-            self.id = try node.extract("_id")
+            self.id = try node.extract("id")
+            let ddd = self.id?.string ?? "none"
             
-            print("_id: \(self.id)")
+            print("_id: \(ddd)")
             
             self.created = try node.extract("created")
             self.updated = try node.extract("updated")
@@ -86,10 +86,6 @@ final class User: IdEntity {
         try super.init(request: request)
     }
     
-    public required init(from: String) {
-        print(#function)
-        fatalError("init(from:) has not been implemented")
-    }
 
 ////    init(request: Request) throws {
 ////        print(#function)
@@ -101,31 +97,22 @@ final class User: IdEntity {
     
     
     override func makeNode(context: Context) throws -> Node {
-        print(#function)
-        
-        return try Node(node: [
-            "_id": id,
-            "username": username,
-            "email": email,
-            "password": password,
-            "created": created,
-            "updated": updated
-            ])
+        var node = try super.makeNode(context: context)
+        node["username"] = username.node
+        node["email"] = email.node
+        node["password"] = password.node
+
+        return node
     }
     
-    override func json() -> Node {
-        print(#function)
-        
-        let d = self.id?.string
-        print("ppppp: \(d)")
-
-        
-        return [
-            "id": self.id ?? Node.null,
-            "email": email.node,
-            "created": created.node
-        
-        ]
+    override func json() throws -> Node {
+        var node = try super.json()
+        node.append(node: try Node(node: [
+            "email": email,
+            ]))
+//        node["email"] = email.node
+//        node["keyId"] = keyId.node
+        return node
     }
 }
 
@@ -142,7 +129,14 @@ final class User: IdEntity {
 
 //extension User: Preparation {
 //    static func prepare(_ database: Database) throws {
-//        //
+//        
+//        try database.create("users") { users in
+//            users.id()
+//            users.string("name", unique: true)
+//            users.custom("data", type: "JSON")
+//            users.custom("time", type: "TIMESTAMP", default: 1234)
+//        }
+//
 //    }
 //    
 //    static func revert(_ database: Database) throws {
@@ -191,6 +185,5 @@ class Password: ValidationSuite {
 //    }
 //    
 //}
-
 
 
