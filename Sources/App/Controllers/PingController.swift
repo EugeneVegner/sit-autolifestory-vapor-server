@@ -18,25 +18,25 @@ final class PingController: ResourceRepresentable {
         
         let date = Date()
         let dateHex = date.hashValue.hex
-        let hash: String = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
-        let expired: Int32 = Int32(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
-        let expiredD: Double = date.addingTimeInterval(60*60*1).timeIntervalSince1970.doubleValue
+//        let hash: String = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
+//        let expired: Int32 = Int32(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
+//        let expiredD: Double = date.addingTimeInterval(60*60*1).timeIntervalSince1970.doubleValue
         
-        print("IntMax: \(IntMax())")
-        print("Int8.max: \(Int8.max)")
-        print("Int16.max: \(Int16.max)")
-        print("Int32.max: \(Int32.max)") // year 2038 (2147483647)
-        print("Int64.max: \(Int64.max)") // year 2262 (9223372036854775807)
+//        print("IntMax: \(IntMax())")
+//        print("Int8.max: \(Int8.max)")
+//        print("Int16.max: \(Int16.max)")
+//        print("Int32.max: \(Int32.max)") // year 2038 (2147483647)
+//        print("Int64.max: \(Int64.max)") // year 2262 (9223372036854775807)
 
         
         
         
-        print("dateHex: \(dateHex)")
-        print("token hash: \(hash)")
-        print("expired: \(expired)")
-        print("expiredD: \(Node.number(Node.Number(expiredD)).string)")
-        print("Request client: \(request.client)")
-        print("Request session: \(try request.session().data)")
+//        print("dateHex: \(dateHex)")
+//        print("token hash: \(hash)")
+//        print("expired: \(expired)")
+//        print("expiredD: \(Node.number(Node.Number(expiredD)).string)")
+//        print("Request client: \(request.client)")
+//        print("Request session: \(try request.session().data)")
         
         //let ses = try Session()
         //try ses.generateToken()
@@ -45,8 +45,11 @@ final class PingController: ResourceRepresentable {
         
         var nodes: [Node] = []
         do {
-            let users = try User.all()
-            
+            let users = try User.query().run().array
+//            return Server.success(data: [
+//                "users": try users.makeNode()
+//                ])
+
             for user in users {
                 let urs = try user.json()
                 nodes.append(urs)

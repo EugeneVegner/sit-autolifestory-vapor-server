@@ -11,7 +11,7 @@ import HTTP
 import Fluent
 import Foundation
 
-final class Session: IdEntity {
+final class Session: MongoEntity {
     //var id: Node?
     var userId: Node?
     var token: String

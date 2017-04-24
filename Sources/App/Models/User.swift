@@ -4,7 +4,7 @@ import Fluent
 import Foundation
 import BSON
 
-final class User: IdEntity {
+final class User: MongoEntity {
     //var id: Node?
     var username: String
     var email: String
@@ -60,13 +60,13 @@ final class User: IdEntity {
             self.password = try node.extract("password")
             
             try super.init(node: node, in: context)
-            self.id = try node.extract("id")
-            let ddd = self.id?.string ?? "none"
-            
-            print("_id: \(ddd)")
-            
-            self.created = try node.extract("created")
-            self.updated = try node.extract("updated")
+//            self.id = try node.extract("_id")
+//            let ddd = self.id?.string ?? "none"
+//            
+//            print("_id: \(ddd)")
+//            
+//            self.created = try node.extract("created")
+//            self.updated = try node.extract("updated")
 
         } catch  {
             print(error)
@@ -95,7 +95,6 @@ final class User: IdEntity {
 //        password = try request.data["password"].validated()
 ////    }
     
-    
     override func makeNode(context: Context) throws -> Node {
         var node = try super.makeNode(context: context)
         node["username"] = username.node
@@ -108,6 +107,7 @@ final class User: IdEntity {
     override func json() throws -> Node {
         var node = try super.json()
         node.append(node: try Node(node: [
+            "username": username,
             "email": email,
             ]))
 //        node["email"] = email.node
@@ -115,6 +115,8 @@ final class User: IdEntity {
         return node
     }
 }
+
+
 
 //extension User {
 //    /**
