@@ -19,6 +19,7 @@ final class Session: MongoEntity {
     var deviceId: String
     var udid: String?
     var platform: String
+    var provider: ProviderType = .email//fb - logeed via fb, email - logged by email
     
     required init(node: Node, in context: Context) throws {
         self.userId = try node.extract("userId")
@@ -27,16 +28,18 @@ final class Session: MongoEntity {
         self.deviceId = try node.extract("deviceId")
         self.udid = try node.extract("udid")
         self.platform = try node.extract("platform")
+        self.provider = ProviderType(rawValue: try node.extract("provider")) ?? .email
         try super.init(node: node, in: context)
     }
     
-    public init(userId: Node?, token: String, deviceId: String, udid: String?, platform: String) throws{
+    public init(userId: Node?, deviceId: String, udid: String?, platform: String, provider: ProviderType) throws {
         self.userId = userId
-        self.token = token
+        self.token = ""
         self.deviceId = deviceId
         self.udid = udid
         self.platform = platform
         self.expired = 0
+        self.provider = provider
         super.init(uuid: UUID().uuidString)
     }
     
@@ -57,7 +60,8 @@ final class Session: MongoEntity {
             "udid": udid,
             "platform": platform,
             "created": created,
-            "updated": updated ?? Node.null
+            "updated": updated,
+            "provider": provider.rawValue
             ])
     }
     
@@ -79,10 +83,11 @@ final class Session: MongoEntity {
             "userId": userId,
             "token": token,
             "expired": expired,
+            "provider": provider.rawValue
             ]))
         return node
     }
-
+        
 }
 
 //extension User {

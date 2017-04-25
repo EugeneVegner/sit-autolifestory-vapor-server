@@ -71,9 +71,7 @@ public class MongoEntity: Entity {
     }
     
     public func json() throws -> Node {
-        print(#function)
-        print("self.id <---: \(self.id)")
-        
+        log(#function)
         return try Node(node: [
             "id": self.id,
             "exists": self.exists,
@@ -85,16 +83,13 @@ public class MongoEntity: Entity {
     // MARK: - Requared
 
     required public init(request: Request) throws {
-        let uuid = UUID().uuidString
-        self.id = uuid.makeNode()
+        //let uuid = UUID().uuidString
+        //self.id = uuid.makeNode()
         self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
     required public init(node: Node, in context: Context) throws {
         self.id = node
-        self.exists = true
-        print("self.id: \(self.id)")
-        
         self.created = try node.extract("created")
         self.updated = try node.extract("updated")
     }

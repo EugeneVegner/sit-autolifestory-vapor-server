@@ -10,6 +10,8 @@
 		1E08C9711EABE6CD0054735A /* NodesExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9701EABE6CD0054735A /* NodesExt.swift */; };
 		1E08C9731EAD3E9F0054735A /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9721EAD3E9F0054735A /* Tags.swift */; };
 		1E08C9751EAD60640054735A /* HeadersExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9741EAD60640054735A /* HeadersExt.swift */; };
+		1E08C9771EAEC2230054735A /* FacebookExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9761EAEC2230054735A /* FacebookExt.swift */; };
+		1E08C9791EAEC5520054735A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E08C9781EAEC5520054735A /* Constants.swift */; };
 		1E2C2ED71EA56FD7001626BD /* RequestExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED61EA56FD7001626BD /* RequestExt.swift */; };
 		1E2C2ED91EA570E6001626BD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2ED81EA570E6001626BD /* Session.swift */; };
 		1E2C2EDB1EA5810B001626BD /* CustomValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */; };
@@ -5916,6 +5918,8 @@
 		1E08C9701EABE6CD0054735A /* NodesExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodesExt.swift; sourceTree = "<group>"; };
 		1E08C9721EAD3E9F0054735A /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		1E08C9741EAD60640054735A /* HeadersExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadersExt.swift; sourceTree = "<group>"; };
+		1E08C9761EAEC2230054735A /* FacebookExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExt.swift; sourceTree = "<group>"; };
+		1E08C9781EAEC5520054735A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1E2C2ED61EA56FD7001626BD /* RequestExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestExt.swift; sourceTree = "<group>"; };
 		1E2C2ED81EA570E6001626BD /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		1E2C2EDA1EA5810B001626BD /* CustomValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomValidators.swift; sourceTree = "<group>"; };
@@ -6507,7 +6511,7 @@
 		OBJ_1539 /* FluentMongo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FluentMongo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_154 /* KeyAccessible+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyAccessible+Merge.swift"; sourceTree = "<group>"; };
 		OBJ_1540 /* VaporMongo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VaporMongo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_1541 /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_1541 /* App */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_155 /* KeyAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyAccessible.swift; sourceTree = "<group>"; };
 		OBJ_156 /* Node+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+Merge.swift"; sourceTree = "<group>"; };
 		OBJ_157 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
@@ -8223,6 +8227,7 @@
 				1E2C2ED61EA56FD7001626BD /* RequestExt.swift */,
 				1E08C9701EABE6CD0054735A /* NodesExt.swift */,
 				1E08C9741EAD60640054735A /* HeadersExt.swift */,
+				1E08C9761EAEC2230054735A /* FacebookExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -8659,6 +8664,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_18 /* Response.swift */,
+				1E08C9781EAEC5520054735A /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -14214,7 +14220,9 @@
 			buildActionMask = 0;
 			files = (
 				1E08C9751EAD60640054735A /* HeadersExt.swift in Sources */,
+				1E08C9791EAEC5520054735A /* Constants.swift in Sources */,
 				OBJ_4124 /* main.swift in Sources */,
+				1E08C9771EAEC2230054735A /* FacebookExt.swift in Sources */,
 				OBJ_4125 /* PingController.swift in Sources */,
 				1E8FFD2F1E9D83A800E677D0 /* SessionMiddleware.swift in Sources */,
 				OBJ_4126 /* PostController.swift in Sources */,

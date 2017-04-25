@@ -44,7 +44,7 @@ final class UsersController {
         
         var session: Session
         do {
-            session = try Session(userId: user.id, token: "", deviceId: "", udid: nil, platform: "")
+            session = try Session(userId: user.id, deviceId: "", udid: nil, platform: request.client?.platform ?? "I", provider: .email)
             try session.generateToken()
             
         } catch  let error {
