@@ -52,17 +52,18 @@ final class Session: MongoEntity {
     }
         
     override func makeNode(context: Context) throws -> Node {
-        return try Node(node: [
+        var node = try super.makeNode(context: context)
+        node.append(node: try Node(node: [
             "userId": userId,
             "token": token,
             "expired": expired,
             "deviceId": deviceId,
             "udid": udid,
             "platform": platform,
-            "created": created,
-            "updated": updated,
             "provider": provider.rawValue
-            ])
+            ]))
+
+        return node
     }
     
     func makeJSON() throws -> JSON {

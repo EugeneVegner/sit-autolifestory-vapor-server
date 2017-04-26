@@ -55,16 +55,16 @@ public class MongoEntity: Entity {
     public var exists: Bool = false
     
     public init(uuid: String) {
-        self.id = uuid.makeNode()
+        //self.id = uuid.makeNode()
         self.created = Int32(Date().timeIntervalSince1970)
         self.updated = nil
     }
     
     
     public func makeNode(context: Context) throws -> Node {
-        if id == nil { id = UUID().uuidString.makeNode() }
+        if id == nil { id = UUID().uuidString.h }
         return try Node(node: [
-            //"_id": id,
+            "_id": id?.,
             "created": created,
             "updated": updated
             ])
@@ -73,8 +73,8 @@ public class MongoEntity: Entity {
     public func json() throws -> Node {
         log(#function)
         return try Node(node: [
-            "id": self.id,
-            "exists": self.exists,
+            "id": id,
+            //"exists": exists,
             "created": created,
             "updated": updated
             ])
