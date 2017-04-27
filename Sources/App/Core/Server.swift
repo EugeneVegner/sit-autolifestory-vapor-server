@@ -21,9 +21,9 @@ class Server {
     
     struct failure {
         var status: Status = .badRequest
-        let errors: [Server.Error]
+        let errors: [Swift.Error]
 
-        init(_ status: Status = .badRequest, errors: [Server.Error]) {
+        init(_ status: Status = .badRequest, errors: [Swift.Error]) {
             self.status = status
             self.errors = errors
         }
@@ -118,8 +118,12 @@ extension Server.failure: ResponseRepresentable {
     func makeResponse() throws -> Response {
         print(#function)
         var array: [Node] = []
-        for err in errors {
-            array.append(err.node)
+        for error in errors {
+            if let err = error as? Server.Error {
+                array.append(err.node)
+            } else {
+                array.append(Server.Error.new(code: -1, info: error.localizedDescription, message: nil, type: "error").node)
+            }
         }
         
         let body = try JSON(node: [
@@ -131,12 +135,6 @@ extension Server.failure: ResponseRepresentable {
         print("failure: \(body)")
         
         return Response(version: Version(major: 1), status: status, headers: Server.headers, body: body)
-
-        
-        
-        
-        
-        //return Response(headers: Server.headers, body: body)
     }
 }
 

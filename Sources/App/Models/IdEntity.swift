@@ -62,9 +62,9 @@ public class MongoEntity: Entity {
     
     
     public func makeNode(context: Context) throws -> Node {
-        if id == nil { id = UUID().uuidString.h }
+        if id == nil { id = UUID().uuidString.makeNode() }
         return try Node(node: [
-            "_id": id?.,
+            "_id": id?.makeNode(),
             "created": created,
             "updated": updated
             ])

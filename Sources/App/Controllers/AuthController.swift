@@ -8,9 +8,12 @@ final class AuthController {
     class BodyData {
         var deviceId: String
         var deviceToken: String?
+        //var testId: Int
         init(request: Request) throws {
-            self.deviceId = try request.data["deviceId"].validated(by: Default.self).value
-            if let val = request.data["deviceToken"] { self.deviceToken = try val.validated(by: Default.self).value }
+            self.deviceId = try request.get("deviceId", nulled: false, by: Default()) ?? "unknown"
+            self.deviceToken = try request.get("deviceToken", nulled: true) as? String
+            //self.testId = try request.get("deviceToken", nulled: true)! as! Int
+            print("self.deviceToken: \(self.deviceToken)")
         }
 
     }
@@ -21,7 +24,7 @@ final class AuthController {
         
         override init(request: Request) throws {
             self.email = try request.data["email"].validated(by: Email.self).value
-            self.password = try request.data["password"].validated(by: Password.self).value
+            self.password = try request.data["password"].validated(by: Password()).value
             try super.init(request: request)
         }
     }
@@ -67,7 +70,7 @@ final class AuthController {
             
         } catch let error {
             print("Create user error: \(error)")
-            return JSON(["test":error.localizedDescription.node])
+            return Server.failure(errors: [error])
         }
         
     }
