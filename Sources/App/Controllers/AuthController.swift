@@ -7,11 +7,11 @@ final class AuthController {
     
     class BodyData {
         var deviceId: String
-        var deviceToken: String?
+        var deviceToken: Int?
         //var testId: Int
         init(request: Request) throws {
             self.deviceId = try request.get("deviceId", nulled: false, by: Default()) ?? "unknown"
-            self.deviceToken = try request.get("deviceToken", nulled: true) as? String
+            self.deviceToken = try request.get("deviceToken", nulled: true)
             //self.testId = try request.get("deviceToken", nulled: true)! as! Int
             print("self.deviceToken: \(self.deviceToken)")
         }
