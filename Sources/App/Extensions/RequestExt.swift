@@ -38,7 +38,6 @@ extension Request {
         throws -> T?
         where T: PolymorphicInitializable
     {
-        
         guard let val = self.data[field].extract() else {
             if nulled {
                 return nil

@@ -21,6 +21,9 @@ let drop = Droplet()
 do {
     //try drop.addProvider(VaporMongo.Provider.self)
     let mongo = try VaporMongo.Provider(database: "local", user: "admin", password: "qwerty", host: "localhost", port: 27017)
+    //let mongo = try Database(mongoURL: "mongodb://username:password@example.com:1234/mydatabase?ssl")
+
+    
     drop.addProvider(mongo)
     print("MongoDB provider has been added")
 }

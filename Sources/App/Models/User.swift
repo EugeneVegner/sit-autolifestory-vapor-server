@@ -3,6 +3,7 @@ import HTTP
 import Fluent
 import Foundation
 import BSON
+import MongoKitten
 
 final class User: MongoEntity {
     //var id: Node?
@@ -43,6 +44,13 @@ final class User: MongoEntity {
 //            return nil
 //        }
 //    }
+    
+    init(username: String, email: String, password: String) {
+        self.username = username
+        self.email = email
+        self.password = password
+        super.init(uuid: nil)
+    }
 
     
     required init(node: Node, in context: Context) throws {
@@ -97,10 +105,13 @@ final class User: MongoEntity {
     
     override func makeNode(context: Context) throws -> Node {
         var node = try super.makeNode(context: context)
-        node["username"] = username.node
-        node["email"] = email.node
-        node["password"] = password.node
-
+        
+        //let drop = Droplet()
+        node.append(node: try Node(node: [
+            "username": username,
+            "email": email,
+            "password": password//drop.hash(password),
+            ]))
         return node
     }
     

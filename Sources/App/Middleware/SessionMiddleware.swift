@@ -29,7 +29,7 @@ class SessionMiddleware: Middleware {
                 throw Abort.custom(status: .ok, message: "Invalid session")
             }
             
-            let users = try User.query().filter("_id", userId).limit(1).run()
+            let users = try User.query().filter("_id", userId.makeBsonValue().string).limit(1).run()
             guard let user = users.first else {
                 print("user not found")
                 throw Abort.custom(status: .ok, message: "User not found")

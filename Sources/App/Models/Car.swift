@@ -4,6 +4,7 @@ import Foundation
 
 final class Car: Model {
     var id: Node?
+    var userId: Node?
     var content: String
     
     

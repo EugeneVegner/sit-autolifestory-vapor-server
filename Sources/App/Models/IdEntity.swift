@@ -49,22 +49,22 @@ import FluentMongo
 public class MongoEntity: Entity {
     
     public var id: Node?
-    public var created: Int32
-    public var updated: Int32?
+    public var created: Int64
+    public var updated: Int64?
     
     public var exists: Bool = false
     
-    public init(uuid: String) {
+    public init(uuid: String?) {
         //self.id = uuid.makeNode()
-        self.created = Int32(Date().timeIntervalSince1970)
+        self.created = Int64(Date().timeIntervalSince1970)
         self.updated = nil
     }
     
     
     public func makeNode(context: Context) throws -> Node {
-        if id == nil { id = UUID().uuidString.makeNode() }
+        //if id == nil { id = UUID().uuidString.makeNode() }
         return try Node(node: [
-            "_id": id?.makeNode(),
+            //"_id": id?.makeNode(),
             "created": created,
             "updated": updated
             ])
@@ -85,7 +85,7 @@ public class MongoEntity: Entity {
     required public init(request: Request) throws {
         //let uuid = UUID().uuidString
         //self.id = uuid.makeNode()
-        self.created = Int32(Date().timeIntervalSince1970)
+        self.created = Int64(Date().timeIntervalSince1970)
         self.updated = nil
     }
     required public init(node: Node, in context: Context) throws {

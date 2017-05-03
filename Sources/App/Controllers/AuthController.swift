@@ -2,15 +2,15 @@ import Vapor
 import HTTP
 import TurnstileWeb
 import Fluent
+import MongoKitten
 
 final class AuthController {
     
     class BodyData {
         var deviceId: String
-        var deviceToken: Int?
-        //var testId: Int
+        var deviceToken: String?
         init(request: Request) throws {
-            self.deviceId = try request.get("deviceId", nulled: false, by: Default()) ?? "unknown"
+            self.deviceId = try request.get("deviceId", nulled: false, by: NotNull()) ?? "unknown"
             self.deviceToken = try request.get("deviceToken", nulled: true)
             //self.testId = try request.get("deviceToken", nulled: true)! as! Int
             print("self.deviceToken: \(self.deviceToken)")
@@ -21,15 +21,23 @@ final class AuthController {
     class SignInData: BodyData {
         var email: String
         var password: String
-        
         override init(request: Request) throws {
-            self.email = try request.data["email"].validated(by: Email.self).value
-            self.password = try request.data["password"].validated(by: Password()).value
+            self.email = try request.get("email", nulled: false, by: NotNull()) ?? ""
+            self.password = try request.get("password", nulled: false, by: NotNull()) ?? ""
             try super.init(request: request)
         }
     }
     
-    class FBData: BodyData {
+    class SignUpData: SignInData {
+        var username: String
+        override init(request: Request) throws {
+            self.username = try request.get("username", nulled: false, by: NotNull()) ?? "noname"
+            try super.init(request: request)
+        }
+    }
+    
+
+    class FacebookData: BodyData {
         var facebookToken: String
         override init(request: Request) throws {
             self.facebookToken = try request.data["facebookToken"].validated(by: Default.self).value
@@ -37,6 +45,8 @@ final class AuthController {
         }
     }
 
+    // MARK: - Routs
+    
     
     func signIn(request: Request) throws -> ResponseRepresentable {
         log(#function)
@@ -76,10 +86,30 @@ final class AuthController {
     }
     
     func signUp(request: Request) throws -> ResponseRepresentable {
-        
-        
-        
-        return JSON([:])
+        log(#function)
+        do {
+            let data = try request.parseSignUpData()
+            print("data: \(data)")
+            let user = try createNewUser(request: request, data: data)
+            let session = try configureSessionIfNeeded(user: user, request: request, data: data)
+            //print("user: \(user)")
+            request.currentUser = user
+            
+            let r = try Node(node:
+                [
+                    "users": [
+                        try user.json()
+                    ],
+                    "sessions": [
+                        try session.json()
+                    ]
+                ])
+            return Server.success(data: r)
+            
+        } catch let error {
+            print("Create user error: \(error)")
+            return Server.failure(errors: [error])
+        }
         
     }
 
@@ -95,6 +125,38 @@ final class AuthController {
         
          return JSON([:])
         
+    }
+    
+    // MARK: - Private
+    
+    private func createNewUser(request: Request, data: SignUpData) throws -> User {
+        let filter = Filter(User.self, .group(.or, [
+            Filter(User.self, .compare("email", .equals, data.email.makeNode())),
+            Filter(User.self, .compare("username", .equals, data.username.makeNode()))
+            ]))
+        
+        
+        let users = try User.all()
+        users.fin
+        
+        
+        let query = try User.query()
+        query.filters = [filter]
+        let result = try query.limit(1).run()
+        
+        if let u = result.first {
+            let err: Server.Error
+            if u.username == data.username {
+                err = Server.Error.new(code: 20, info: "Username already exist", message: nil, type: "username")
+            } else {
+                err = Server.Error.new(code: 21, info: "Email already exist", message: nil, type: "email")
+            }
+            throw err
+        }
+        
+        var user = User(username: data.username, email: data.email, password: data.password)
+        try user.save()
+        return user
     }
 
     private func configureSessionIfNeeded(user: User, request: Request, data: BodyData) throws -> Session {
@@ -113,7 +175,10 @@ final class AuthController {
         
         var session = sessions.first
         if session == nil {
-            session = try Session(userId: userId, deviceId: data.deviceId, udid: data.deviceId, platform: client.platform ?? "", provider: .email)
+//            session = try Session(userId: userId, deviceId: data.deviceId, udid: data.deviceId, platform: client.platform ?? "", provider: .email)
+            
+            session = try Session(user: user, deviceId: data.deviceId, udid: data.deviceId, platform: client.platform ?? "", provider: .email)
+
         }
         
         try session?.generateToken()
@@ -134,14 +199,14 @@ private extension Request {
         return try AuthController.SignInData(request: self)
     }
     
-    func parseSignUpData() throws -> AuthController.SignInData {
-        guard let _ = json else { throw Abort.badRequest }
-        return try AuthController.SignInData(request: self)
+    func parseSignUpData() throws -> AuthController.SignUpData {
+        //guard let _ = json else { throw Abort.badRequest }
+        return try AuthController.SignUpData(request: self)
     }
     
-    func parseFbData() throws -> AuthController.FBData {
+    func parseFacebookData() throws -> AuthController.FacebookData {
         guard let _ = json else { throw Abort.badRequest }
-        return try AuthController.FBData(request: self)
+        return try AuthController.FacebookData(request: self)
     }
 }
 

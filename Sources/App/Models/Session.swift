@@ -10,19 +10,22 @@ import Vapor
 import HTTP
 import Fluent
 import Foundation
+import BSON
+import MongoKitten
 
 final class Session: MongoEntity {
     //var id: Node?
-    var userId: Node?
+    //var userId: Node?
+    var userId: ObjectId?
     var token: String
-    var expired: Int32
+    var expired: Int64
     var deviceId: String
     var udid: String?
     var platform: String
     var provider: ProviderType = .email//fb - logeed via fb, email - logged by email
     
     required init(node: Node, in context: Context) throws {
-        self.userId = try node.extract("userId")
+        //self.userId = try node.extract("userId")
         self.token = try node.extract("token")
         self.expired = try node.extract("expired")
         self.deviceId = try node.extract("deviceId")
@@ -33,7 +36,7 @@ final class Session: MongoEntity {
     }
     
     public init(userId: Node?, deviceId: String, udid: String?, platform: String, provider: ProviderType) throws {
-        self.userId = userId
+        //self.userId = userId//ObjectId(userId?.string ?? "").makeBsonValue()
         self.token = ""
         self.deviceId = deviceId
         self.udid = udid
@@ -42,6 +45,18 @@ final class Session: MongoEntity {
         self.provider = provider
         super.init(uuid: UUID().uuidString)
     }
+    
+    public init(user: User?, deviceId: String, udid: String?, platform: String, provider: ProviderType) throws {
+        self.userId = try ObjectId.init(user?.id?.string ?? "")// (user!.id!)//user?.id?.makeNode()
+        self.token = ""
+        self.deviceId = deviceId
+        self.udid = udid
+        self.platform = platform
+        self.expired = 0
+        self.provider = provider
+        super.init(uuid: UUID().uuidString)
+    }
+
     
 //    public required init(from: String) {
 //        fatalError("init(from:) has not been implemented")
@@ -54,7 +69,7 @@ final class Session: MongoEntity {
     override func makeNode(context: Context) throws -> Node {
         var node = try super.makeNode(context: context)
         node.append(node: try Node(node: [
-            "userId": userId,
+            "userId": userId!.makeBsonValue().string,// String("ObjectId(\"\(userId?.string ?? "")\")"),// userId,
             "token": token,
             "expired": expired,
             "deviceId": deviceId,
@@ -74,14 +89,14 @@ final class Session: MongoEntity {
         let date = Date()
         let dateHex = date.hashValue.hex
         token = try CryptoHasher(method: .sha1, defaultKey: nil).make(dateHex)
-        expired = Int32(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
-        updated = Int32(date.timeIntervalSince1970)
+        expired = Int64(date.addingTimeInterval(60*60*1).timeIntervalSince1970)
+        updated = Int64(date.timeIntervalSince1970)
     }
     
     override func json() throws -> Node {
         var node = try super.json()
         node.append(node: try Node(node: [
-            "userId": userId,
+            "userId": userId?.makeBsonValue().string,
             "token": token,
             "expired": expired,
             "provider": provider.rawValue
