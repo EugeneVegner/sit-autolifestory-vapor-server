@@ -67,3 +67,5 @@ fastlane/test_output
 Server.xcodeproj/xcshareddata/xcschemes/Server.xcscheme
 Server.xcodeproj/GeneratedModuleMap/
 .idea
+
+Server.xcodeproj/GeneratedModuleMap/CLibreSSL/module.modulemap
