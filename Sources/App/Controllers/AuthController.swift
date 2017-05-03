@@ -13,7 +13,7 @@ final class AuthController {
             self.deviceId = try request.get("deviceId", nulled: false, by: NotNull()) ?? "unknown"
             self.deviceToken = try request.get("deviceToken", nulled: true)
             //self.testId = try request.get("deviceToken", nulled: true)! as! Int
-            print("self.deviceToken: \(self.deviceToken)")
+            //print("self.deviceToken: \(self.deviceToken)")
         }
 
     }
