@@ -73,6 +73,16 @@ final class UsersController {
 
     }
     
+    func select(request: Request) throws -> ResponseRepresentable {
+        
+        
+        
+        
+        
+        
+       return JSON([:])
+    }
+    
     func show(request: Request, user: User) throws -> ResponseRepresentable {
         return user as! ResponseRepresentable
     }

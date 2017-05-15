@@ -137,7 +137,7 @@ final class AuthController {
         
         
         let users = try User.all()
-        users.fin
+        //users.fin
         
         
         let query = try User.query()

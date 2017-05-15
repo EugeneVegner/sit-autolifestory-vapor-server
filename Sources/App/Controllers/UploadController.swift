@@ -13,10 +13,11 @@ import Fluent
 final class UploadController {
 
     func uploadImage(request: Request) throws -> ResponseRepresentable {
-        let name = req.data["name"]
+        let name = request.data["name"]
         //let image = req.data["image"] // or req.multipart["image"]
-        let image = req.multipart["image"]
+        let image = request.multipart?["image"]
 
+        
         
         let r = try Node(node:
             [

@@ -52,8 +52,8 @@ drop.grouped(ClientMiddleware()).group("api") { api in
 
         v1.group("auth", closure: { (authV1) in
             let auth = AuthController()
-            authV1.post("signIn", handler: auth.signIn)
-            authV1.post("signUp", handler: auth.signUp)
+            authV1.post("sign_in", handler: auth.signIn)
+            authV1.post("sign_up", handler: auth.signUp)
             authV1.post("fb", handler: auth.fb)
             
         })
