@@ -23,4 +23,10 @@ let package = Package(
  https://medium.com/@joannis.orlandos/using-mongokitten-vapor-for-your-applications-24dbac2f5dd9
  
  
+ Examples
+ curl -H "Content-Type: application/json" -X POST -d '{}' http://0.0.0.0:8080/api/cars
+
+ curl -H "Content-Type: application/json" -X POST -d '{"name":"Fiat"}' http://0.0.0.0:8080/api/cars
+
+ 
  */

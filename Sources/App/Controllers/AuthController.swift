@@ -1,8 +1,13 @@
 import Vapor
 import HTTP
 import TurnstileWeb
+import Turnstile
 import Fluent
 import MongoKitten
+import Foundation
+import Dispatch
+import VaporMongo
+
 
 final class AuthController {
     
@@ -12,8 +17,6 @@ final class AuthController {
         init(request: Request) throws {
             self.deviceId = try request.get("deviceId", nulled: false, by: NotNull()) ?? "unknown"
             self.deviceToken = try request.get("deviceToken", nulled: true)
-            //self.testId = try request.get("deviceToken", nulled: true)! as! Int
-            //print("self.deviceToken: \(self.deviceToken)")
         }
 
     }
@@ -30,7 +33,9 @@ final class AuthController {
     
     class SignUpData: SignInData {
         var username: String
+        var country: String
         override init(request: Request) throws {
+            self.country = try request.get("country", nulled: false, by: NotNull()) ?? ""
             self.username = try request.get("username", nulled: false, by: NotNull()) ?? "noname"
             try super.init(request: request)
         }
@@ -39,7 +44,9 @@ final class AuthController {
 
     class FacebookData: BodyData {
         var facebookToken: String
+        var country: String
         override init(request: Request) throws {
+            self.country = try request.get("country", nulled: false, by: NotNull()) ?? ""
             self.facebookToken = try request.data["facebookToken"].validated(by: Default.self).value
             try super.init(request: request)
         }
@@ -114,18 +121,89 @@ final class AuthController {
     }
 
     func fb(request: Request) throws -> ResponseRepresentable {
-        
-        //let facebook = Facebook(clientID: "clientID", clientSecret: "clientSecret")
-        //let google = Google(clientID: "clientID", clientSecret: "clientSecret")
+        log(#function)
+        do {
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            let data = try request.parseFacebookData()
+            print("data: \(data)")
+            
+            
+            //let token: AccessToken = AccessToken(string: data.facebookToken)
+            let facebook = Facebook(clientID: Const.FBAppId, clientSecret: Const.FBAppSecret)
+            
+            var urlComponents = URLComponents(string: "https://graph.facebook.com/me")!
+            urlComponents.setQueryItems(dict: ["fields": "name, first_name, last_name, email",
+                                               "access_token": data.facebookToken])
 
+            var fbrequest = URLRequest(url: urlComponents.url!)
+            fbrequest.setValue("application/json", forHTTPHeaderField: "Accept")
+
+            guard let facebookData = try facebook.urlSession.executeRequest(request: fbrequest).0 else {
+                throw Server.Error.new(code: 76, info: "ewr", message: "Facebook ", type: "facebook")
+            }
+            
+            let facebookUser = try FacebookUser(data: facebookData)
+            var user = try User.getByFacebookId(fid: facebookUser.id)
+            if user == nil {
+                user = try User(
+                    username: facebookUser.name,
+                    email: facebookUser.email,
+                    password: nil,
+                    firstName: facebookUser.firstName,
+                    lastName: facebookUser.lastName,
+                    fid: facebookUser.id,
+                    provider: .fb,
+                    country: "")
+                
+                try user?.save()
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            throw Server.Error.unknown
+            
+            //let user = try createNewUser(request: request, data: data)
+            //let session = try configureSessionIfNeeded(user: user, request: request, data: data)
+            //print("user: \(user)")
+            //request.currentUser = user
+
+            
+            semaphore.signal()
+            
+            let r = try Node(node:
+                [
+                    "users": [
+                        //try user.json()
+                    ],
+                    "sessions": [
+                        //try session.json()
+                    ]
+                ])
+            semaphore.wait()
+            
+            return Server.success(data: r)
+            
+        } catch let error {
+            print("Facebook error: \(error)")
+            return Server.failure(errors: [error])
+        }
+        
         
         //let credentials = try facebook.authenticate(authorizationCodeCallbackURL: url, state: state) as! FacebookAccount
         //let credentials = try google.authenticate(authorizationCodeCallbackURL: url, state: state) as! GoogleAccount
 
         
-         return JSON([:])
         
     }
+
     
     // MARK: - Private
     
@@ -154,7 +232,7 @@ final class AuthController {
             throw err
         }
         
-        var user = User(username: data.username, email: data.email, password: data.password)
+        var user = User(username: data.username, email: data.email, password: data.password,)
         try user.save()
         return user
     }
@@ -191,7 +269,10 @@ final class AuthController {
     }
     
     
+    
+    
 }
+
 
 private extension Request {
     func parseSignInData() throws -> AuthController.SignInData {
@@ -210,10 +291,3 @@ private extension Request {
     }
 }
 
-
-//extension Request {
-//    func post() throws -> Post {
-//        guard let json = json else { throw Abort.badRequest }
-//        return try Post(node: json)
-//    }
-//}

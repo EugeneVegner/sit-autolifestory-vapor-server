@@ -8,10 +8,18 @@ import MongoKitten
 final class User: MongoEntity {
     //var id: Node?
     var username: String
+    var firstName: String
+    var lastName: String
     var email: String
-    var password: String
+    var password: String?
+    var fid: Int64?
+    var provider: ProviderType
+    var country: String
     
-    
+    required public init(request: Request) throws {
+        fatalError("init(request:) has not been implemented")
+    }
+
     //let title = Valid(Count<String>.max(5))
     
 //    public required init(from: String) {
@@ -45,10 +53,15 @@ final class User: MongoEntity {
 //        }
 //    }
     
-    init(username: String, email: String, password: String) {
+    init(username: String, email: String, password: String?, firstName: String, lastName: String, fid: Int64? = nil, provider: ProviderType, country: String ) {
         self.username = username
         self.email = email
         self.password = password
+        self.firstName = firstName
+        self.lastName = lastName
+        self.fid = fid
+        self.provider = provider
+        self.country = country
         super.init(uuid: nil)
     }
 
@@ -66,6 +79,11 @@ final class User: MongoEntity {
             self.username = try node.extract("username")
             self.email = try node.extract("email")
             self.password = try node.extract("password")
+            self.firstName = try node.extract("firstName")
+            self.lastName = try node.extract("lastName")
+            self.fid = try node.extract("fid")
+            self.provider = ConnectionProvider(rawValue: try node.extract("provider")) ?? .unknown
+            self.country = try node.extract("country")
             
             try super.init(node: node, in: context)
 //            self.id = try node.extract("_id")
@@ -82,15 +100,50 @@ final class User: MongoEntity {
         }
     }
     
-    public required init(request: Request) throws {
+    public required init(request: Request, provider: ProviderType, data: Data? = nil) throws {
         print(#function)
-        let username: Valid<Username> = try request.data["username"].validated()
-        let email: Valid<Email> = try request.data["email"].validated()
-        let password: Valid<Password> = try request.data["password"].validated()
+        self.provider = provider
         
-        self.username = username.value
-        self.email = email.value
-        self.password = password.value
+        switch provider {
+        case .email:
+            let username: Valid<Username> = try request.data["username"].validated()
+            let email: Valid<Email> = try request.data["email"].validated()
+            let password: Valid<Password> = try request.data["password"].validated()
+            let country: Valid<Country> = try request.data["country"].validated()
+            
+            self.username = username.value
+            self.email = email.value
+            self.password = password.value
+            self.country = country.value
+            
+            self.firstName = ""
+            self.lastName = ""
+            
+            break
+            
+        case .fb:
+            
+            self.password = nil
+            if let p = params {
+                let username: Valid<Username> = try p["name"].validated()
+                let firstName: Valid<Username> = try p["first_name"].validated()
+                let lastName: Valid<Username> = try p["last_name"].validated()
+                let email: Valid<Username> = try p["email"].validated()
+                let id: Valid<Username> = try p["id"].validated()
+                
+                
+                self.firstName
+            
+            
+            
+            }
+            
+            
+            break
+
+        }
+        
+        
         try super.init(request: request)
     }
     
@@ -125,6 +178,7 @@ final class User: MongoEntity {
 //        node["keyId"] = keyId.node
         return node
     }
+    
 }
 
 
@@ -157,6 +211,37 @@ final class User: MongoEntity {
 //    }
 //}
 
+
+// MARK: - Database requests
+
+extension User {
+    
+    
+    static func getByFacebookId(fid: Int64) throws -> User? {
+        let filter = Filter(self, .compare("fid", .equals, try fid.makeNode()))
+        let query = try User.query()
+        query.filters = [filter]
+        return try query.limit(1).run().first
+    }
+
+//    static func getById(fid: Int64) throws -> User? {
+//        let filter = Filter(self, .compare("fid", .equals, try fid.makeNode()))
+//        let query = try User.query()
+//        query.filters = [filter]
+//        return try query.limit(1).run().first
+//    }
+
+
+
+
+
+
+
+
+
+
+}
+
 // MARK: - Custom validators
 
 class Username: ValidationSuite {
@@ -178,6 +263,17 @@ class Password: ValidationSuite {
         try evaluation.validate(input: value)
     }
 }
+
+class Country: ValidationSuite {
+    static func validate(input value: String) throws {
+        print(#function)
+        let evaluation = OnlyAlphanumeric.self
+            && Count.min(2)
+            && Count.max(4)
+        try evaluation.validate(input: value)
+    }
+}
+
 
 //class PasswordValidation: ValidationSuite {
 //    

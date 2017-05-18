@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44D8CA9F1ECDB85500A21D73 /* URLComponentsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8CA9B1ECDB80000A21D73 /* URLComponentsExt.swift */; };
+		44D8CAA01ECDB85B00A21D73 /* URLRequestExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8CA9D1ECDB84B00A21D73 /* URLRequestExt.swift */; };
+		44D8CAA21ECDE04A00A21D73 /* FacebookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8CAA11ECDE04A00A21D73 /* FacebookUser.swift */; };
 		OBJ_1563 /* libc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1475 /* libc.swift */; };
 		OBJ_1570 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1477 /* Array.swift */; };
 		OBJ_1571 /* Bool+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_1478 /* Bool+String.swift */; };
@@ -5917,6 +5920,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44D8CA9B1ECDB80000A21D73 /* URLComponentsExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLComponentsExt.swift; sourceTree = "<group>"; };
+		44D8CA9D1ECDB84B00A21D73 /* URLRequestExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestExt.swift; sourceTree = "<group>"; };
+		44D8CAA11ECDE04A00A21D73 /* FacebookUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookUser.swift; sourceTree = "<group>"; };
 		OBJ_100 /* URandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URandom.swift; sourceTree = "<group>"; };
 		OBJ_1000 /* ec_cvt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ec_cvt.c; sourceTree = "<group>"; };
 		OBJ_1001 /* ec_err.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ec_err.c; sourceTree = "<group>"; };
@@ -8743,6 +8749,8 @@
 				OBJ_24 /* JSONExtension.swift */,
 				OBJ_25 /* NodesExt.swift */,
 				OBJ_26 /* RequestExt.swift */,
+				44D8CA9B1ECDB80000A21D73 /* URLComponentsExt.swift */,
+				44D8CA9D1ECDB84B00A21D73 /* URLRequestExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -9097,6 +9105,7 @@
 				OBJ_36 /* Post.swift */,
 				OBJ_37 /* Session.swift */,
 				OBJ_38 /* User.swift */,
+				44D8CAA11ECDE04A00A21D73 /* FacebookUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -9568,7 +9577,7 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -9581,7 +9590,6 @@
 				OBJ_44 /* Dependencies */,
 				OBJ_1506 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_501 /* Engine 1.3.12 */ = {
@@ -12591,7 +12599,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_1506 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -14226,11 +14234,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				44D8CA9F1ECDB85500A21D73 /* URLComponentsExt.swift in Sources */,
 				OBJ_4140 /* main.swift in Sources */,
 				OBJ_4141 /* AuthController.swift in Sources */,
 				OBJ_4142 /* PingController.swift in Sources */,
 				OBJ_4143 /* PostController.swift in Sources */,
 				OBJ_4144 /* UploadController.swift in Sources */,
+				44D8CAA21ECDE04A00A21D73 /* FacebookUser.swift in Sources */,
 				OBJ_4145 /* UsersController.swift in Sources */,
 				OBJ_4146 /* CustomValidators.swift in Sources */,
 				OBJ_4147 /* Errors.swift in Sources */,
@@ -14242,6 +14252,7 @@
 				OBJ_4153 /* NodesExt.swift in Sources */,
 				OBJ_4154 /* RequestExt.swift in Sources */,
 				OBJ_4155 /* Constants.swift in Sources */,
+				44D8CAA01ECDB85B00A21D73 /* URLRequestExt.swift in Sources */,
 				OBJ_4156 /* Response.swift in Sources */,
 				OBJ_4157 /* ClientMiddleware.swift in Sources */,
 				OBJ_4158 /* SessionMiddleware.swift in Sources */,

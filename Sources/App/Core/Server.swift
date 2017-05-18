@@ -7,11 +7,6 @@ enum CallbackType {
     case success, failure
 }
 
-enum ProviderType: String {
-    case email = "email"
-    case fb = "fb"
-}
-
 public func log(_ items: Any...) {
     print(items)
 }
